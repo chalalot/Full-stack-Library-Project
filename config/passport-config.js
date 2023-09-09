@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const User = require("./../models/user.js");
 
 function initialize(passport) {
+  // arrow function used to authenticate users. Passport js will run this when authenticate
   const authenticateUser = async (username, password, done) => {
     const user = await User.findOne({ username: username });
 
@@ -25,11 +26,13 @@ function initialize(passport) {
     new LocalStrategy(
       {
         usernameField: "username",
+        passwordField: "password",
       },
       authenticateUser,
     ),
   );
 
+  // manage user session
   passport.serializeUser((user, done) => done(null, user._id));
   passport.deserializeUser(async (id, done) => {
     try {
