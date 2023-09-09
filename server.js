@@ -32,11 +32,11 @@ app.get("/", (req, res) => {
   if (req.user) {
     // Already login
     if (req.user.role === "seller") {
-      res.send("seller");
+      res.render("seller/index.ejs", { user: req.user });
     } else if (req.user.role === "buyer") {
-      res.send("buyer");
+      res.render("buyer/index.ejs", { user: req.user });
     } else if (req.user.role === "shipper") {
-      res.send("shipper");
+      res.render("shipper/index.ejs", { user: req.user });
     }
   } else {
     // Have not login

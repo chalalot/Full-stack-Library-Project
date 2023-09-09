@@ -32,6 +32,7 @@ function initialize(passport) {
     ),
   );
 
+  // manage user session
   passport.serializeUser((user, done) => done(null, user._id));
   passport.deserializeUser(async (id, done) => {
     try {
