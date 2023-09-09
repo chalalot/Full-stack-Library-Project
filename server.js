@@ -26,8 +26,24 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Index page
 app.get("/", (req, res) => {
-  res.render("index.ejs", { name: req.user.username });
+  // Check if user already login
+  if (req.user) {
+    // Already login
+    if (req.user.role === "seller") {
+      res.send("seller");
+    } else if (req.user.role === "buyer") {
+      res.send("buyer");
+    } else if (req.user.role === "shipper") {
+      res.send("shipper");
+    }
+  } else {
+    // Have not login
+    console.log("User has not login");
+    res.redirect("/checkin/login");
+  }
+  // res.render("index.ejs", { name: req.user.username });
 });
 
 // Set up router
