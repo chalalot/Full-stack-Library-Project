@@ -7,6 +7,7 @@ const flash = require("express-flash");
 const session = require("express-session");
 const checkinRouter = require("./routes/checkin.js");
 const passport = require("passport");
+const methodOverride = require("method-override");
 
 // Set up mongoose
 require("./config/db");
@@ -25,25 +26,27 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride("_method"));
+
+// Check if user authenticated
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next(); // If authenticated then move to the next task
+  }
+  // Redirect to login page
+  res.redirect("/checkin/login");
+}
 
 // Index page
-app.get("/", (req, res) => {
-  // Check if user already login
-  if (req.user) {
-    // Already login
-    if (req.user.role === "seller") {
-      res.render("seller/index.ejs", { user: req.user });
-    } else if (req.user.role === "buyer") {
-      res.render("buyer/index.ejs", { user: req.user });
-    } else if (req.user.role === "shipper") {
-      res.render("shipper/index.ejs", { user: req.user });
-    }
-  } else {
-    // Have not login
-    console.log("User has not login");
-    res.redirect("/checkin/login");
+app.get("/", checkAuthenticated, (req, res) => {
+  // Already login
+  if (req.user.role === "seller") {
+    res.render("seller/index.ejs", { user: req.user });
+  } else if (req.user.role === "buyer") {
+    res.render("buyer/index.ejs", { user: req.user });
+  } else if (req.user.role === "shipper") {
+    res.render("shipper/index.ejs", { user: req.user });
   }
-  // res.render("index.ejs", { name: req.user.username });
 });
 
 // Set up router

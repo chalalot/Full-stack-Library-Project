@@ -8,16 +8,17 @@ const passport = require("passport");
 const initializePassport = require("./../config/passport-config.js");
 initializePassport(passport);
 
-router.get("/login", (req, res) => {
+router.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("checkin/login.ejs");
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("checkin/register.ejs");
 });
 
 router.post(
   "/login",
+  checkNotAuthenticated,
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/checkin/login",
@@ -25,8 +26,17 @@ router.post(
   }),
 );
 
+// Check if not authenticated
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    // Redirect to home page if authenticated
+    return res.redirect("/");
+  }
+  next();
+}
+
 // Create new instance in db and hash password
-router.post("/register", async (req, res) => {
+router.post("/register", checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     let user = new User({
@@ -47,5 +57,14 @@ router.post("/register", async (req, res) => {
   }
 });
 
+// Logout
+router.delete("/logout", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      console.error(err);
+    }
+    res.redirect("/checkin/login");
+  });
+});
 // Export router
 module.exports = router;

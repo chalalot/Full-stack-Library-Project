@@ -1,4 +1,4 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title></title>
@@ -8,7 +8,10 @@
   </head>
   <body>
     <h1>Seller</h1>
-    <h1>Hi <%= user.name %></h1>
+    <h1>Hi <%= user.username %></h1>
+    <form action="/logout?_method=DELETE" method="POST"> 
+      <button type="submit">Log Out</button>
+    </form>
   </body>
 </html>
 
