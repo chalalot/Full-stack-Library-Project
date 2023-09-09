@@ -6,6 +6,7 @@ const express = require("express");
 const flash = require("express-flash");
 const session = require("express-session");
 const checkinRouter = require("./routes/checkin.js");
+const buyerRouter = require("./routes/buyer.js");
 const passport = require("passport");
 const methodOverride = require("method-override");
 
@@ -51,6 +52,7 @@ app.get("/", checkAuthenticated, (req, res) => {
 
 // Set up router
 app.use("/checkin", checkinRouter);
+app.use("/buyer", buyerRouter);
 
 // Run on port 3000
 app.listen(3000);
