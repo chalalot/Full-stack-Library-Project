@@ -1,2 +1,3 @@
 node_modules
-.eslinttrc.js
+/.eslinttrc.js
+/db.js
