@@ -23,11 +23,20 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      maxAge: 3600000,
+    },
   }),
 );
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
+
+// Prevent users from going back
+app.use((req, res, next) => {
+  res.setHeader("Cache-Control", "no-store");
+  next();
+});
 
 // Check if user authenticated
 function checkAuthenticated(req, res, next) {
