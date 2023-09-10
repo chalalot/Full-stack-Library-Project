@@ -14,14 +14,32 @@ router.post("/change-avatar", upload.single("image"), async (req, res) => {
       },
       { returnOriginal: false },
     );
-    console.log("success");
-    console.log(user.profilePicture);
+    console.log(user.__t);
     res.redirect("/");
   } catch (e) {
     console.log(e);
   }
 });
 
+// Check if user authenticated
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next(); // If authenticated then move to the next task
+  }
+  // Redirect to login page
+  res.redirect("/checkin/login");
+}
 
+router.get("/customer-profile", checkAuthenticated, (req, res) => {
+  res.render("profiles/customer-profile.ejs", { user: req.user });
+});
+
+router.get("/vendor-profile", checkAuthenticated, (req, res) => {
+  res.render("profiles/vendor-profile.ejs", { user: req.user });
+});
+
+router.get("/shipper-profile", checkAuthenticated, (req, res) => {
+  res.render("profiles/shipper-profile.ejs", { user: req.user });
+});
 
 module.exports = router;
