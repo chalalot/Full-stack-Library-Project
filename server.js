@@ -6,9 +6,10 @@ const express = require("express");
 const flash = require("express-flash");
 const session = require("express-session");
 const checkinRouter = require("./routes/checkin.js");
-const buyerRouter = require("./routes/buyer.js");
+const profileRouter = require("./routes/profile.js");
 const passport = require("passport");
 const methodOverride = require("method-override");
+const multer = require("multer"); // For uploading files
 
 // Set up mongoose
 require("./config/db");
@@ -31,6 +32,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
+// connect to public
+app.use(express.static("public"));
+// Connect to images
+app.use("/uploads", express.static("uploads"));
 
 // Prevent users from going back
 app.use((req, res, next) => {
@@ -47,24 +52,21 @@ function checkAuthenticated(req, res, next) {
   res.redirect("/checkin/login");
 }
 
-// Index page
+// Index page: Change later
 app.get("/", checkAuthenticated, (req, res) => {
   // Already login
-  if (req.user.role === "seller") {
-    res.render("seller/index.ejs", { user: req.user });
-  } else if (req.user.role === "buyer") {
-    res.render("buyer/index.ejs", { user: req.user });
-  } else if (req.user.role === "shipper") {
+  if (req.user.__t === "Vendor") {
+    res.render("vendor/index.ejs", { user: req.user });
+  } else if (req.user.__t === "Customer") {
+    res.render("customer/index.ejs", { user: req.user });
+  } else if (req.user.__t === "Shipper") {
     res.render("shipper/index.ejs", { user: req.user });
   }
 });
 
 // Set up router
 app.use("/checkin", checkinRouter);
-app.use("/buyer", buyerRouter);
+app.use("/profiles", profileRouter);
 
 // Run on port 3000
 app.listen(3000);
-
-// connect to public
-app.use(express.static('public'));

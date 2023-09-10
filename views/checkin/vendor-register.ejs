@@ -11,24 +11,24 @@
 
     <%- include ('./../partials/nav-register')%>
     <div class="container form">
-      <h1> Register </h1>
-      <form action="register" method="POST" >   
+      <h1> Vendor Register </h1>
+      <form action="vendor-register" method="POST" >   
         <div> 
           <label for="username">Username</label>
           <input type="text" id="username" name="username" required> 
         </div>
-        <div> 
+        <div>
           <label for="password">Password</label>
           <input type="text" id="password" name="password" required> 
         </div>
         <div>
-          <label for="role">User role</label>
-          <select name="role">
-            <option value="buyer">Buyer</option>
-            <option value="seller">Seller</option>
-            <option value="shipper">Shipper</option>
-          </select>
-        </div>
+          <label for="businessName">Business name</label>
+          <input type="text" id="businessName" name="businessName" required> 
+        </div>     
+        <div>
+          <label for="businessAddress">Business Address</label>
+          <input type="text" id="businessAddress" name="businessAddress" required> 
+        </div>     
         <button type="submit">Register</button>
       </form>
       <a href="login">Login</a>

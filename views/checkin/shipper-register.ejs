@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <%- include ('./../partials/nav-register')%>
+    <div class="container form">
+      <h1> Shipper Register </h1>
+      <form action="shipper-register" method="POST" >   
+        <div> 
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required> 
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="text" id="password" name="password" required> 
+        </div>
+
+        <!--Show a drop down menu of hubs-->
+        <label for="hub">Hub</label>
+        <select name="hub" id="hub">
+          <option value="">Select a Hub</option>
+          <% hubs.forEach(function(hub) { %>
+            <option value="<%= hub._id %>"><%= hub.name %></option>
+          <% }); %>
+        </select>
+        <button type="submit">Register</button>
+      </form>
+      <a href="login">Login</a>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
+    <%- include ('./../partials/footer')%>
+  </body>
+</html>
