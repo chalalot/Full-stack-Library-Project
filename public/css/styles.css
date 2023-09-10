@@ -1,6 +1,12 @@
 footer{
+    padding: 10px;
     height: 400px;
-    background-color: red;
+    background-color: #1B2430;
+}
+footer h1{
+    margin: 20px;
+    color: white;
+    width: fit-content;
 }
 
 .clr{
