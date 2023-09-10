@@ -1,5 +1,35 @@
 footer{
     height: 400px;
     background-color: red;
-    
+}
+
+.clr{
+    text-decoration: none;
+    color: black;
+}
+
+.row.nav-register{
+    list-style-type: none;
+}
+
+.container.nav-register{
+    width: 400px;
+}
+
+.col.nav-register{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.clr:hover{
+    text-decoration: underline;
+}
+
+
+.container.form{
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

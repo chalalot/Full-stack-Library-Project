@@ -65,3 +65,6 @@ app.use("/buyer", buyerRouter);
 
 // Run on port 3000
 app.listen(3000);
+
+// connect to public
+app.use(express.static('public'));
