@@ -7,18 +7,12 @@
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Buyer</h1>
-    <h1>Hi <%= user.username %></h1>
-    <h1><%= user.__t %></h1>
-    <img src="/<%= user.profilePicture %>" alt="profile picture">
-    
-    <form action="/profiles/change-avatar" method="POST" enctype="multipart/form-data"> 
-      <input type="file" name="image">
-      <input type="submit" name="" value="Change">  
-    </form>
 
-    <form action="checkin/logout?_method=DELETE" method="POST"> 
-      <button type="submit">Log Out</button>
-    </form>
+    <div class="container">
+      <h1>Buyer</h1>
+      <a href="profile-customer"> Profile</a>
+    </div>
+
+
   </body>
 </html>
