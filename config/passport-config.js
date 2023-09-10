@@ -5,7 +5,7 @@ const User = require("./../models/user.js");
 function initialize(passport) {
   // arrow function used to authenticate users. Passport js will run this when authenticate
   const authenticateUser = async (username, password, done) => {
-    const user = await User.findOne({ username: username });
+    const user = await User.User.findOne({ username: username });
 
     if (user == null) {
       return done(null, false, { message: "No user found" });
@@ -36,7 +36,7 @@ function initialize(passport) {
   passport.serializeUser((user, done) => done(null, user._id));
   passport.deserializeUser(async (id, done) => {
     try {
-      const user = await User.findById(id);
+      const user = await User.User.findById(id);
       done(null, user);
     } catch (err) {
       done(err);
