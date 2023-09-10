@@ -14,8 +14,16 @@ router.post("/change-avatar", upload.single("image"), async (req, res) => {
       },
       { returnOriginal: false },
     );
-    console.log(user.__t);
-    res.redirect("/");
+
+    if (user.__t === "Vendor") {
+      res.redirect("/profiles/vendor-profile");
+    } else if (user.__t === "Shipper") {
+      res.redirect("/profiles/shipper-profile");
+    } else if (user.__t === "Customer") {
+      res.redirect("/profiles/customer-profile");
+    } else {
+      res.redirect("/");
+    }
   } catch (e) {
     console.log(e);
   }
