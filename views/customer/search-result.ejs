@@ -12,7 +12,7 @@
 <body>
     <%- include ('./nav-customer') %>
     <ul>
-        <% productslist.forEach( product => {%>
+        <% products.forEach( product => {%>
             <li class="col">
                 <a href="/customer/<%= product._id %>"> <%= product.name %> </a>
               </li>
