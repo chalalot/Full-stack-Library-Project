@@ -93,7 +93,7 @@ router.post(
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       // Redirect back to register page with error
-      return res.render("checkin/customer-register", {
+      return res.render("checkin/vendor-register", {
         errors: errors.array(),
       });
     }
@@ -128,7 +128,7 @@ router.post(
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       // Redirect back to register page with error
-      return res.render("checkin/customer-register", {
+      return res.render("checkin/shipper-register", {
         errors: errors.array(),
       });
     }
