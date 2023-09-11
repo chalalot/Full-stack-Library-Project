@@ -163,6 +163,5 @@ router.delete("/logout", (req, res) => {
     res.redirect("/checkin/login");
   });
 });
-
 // Export router
 module.exports = router;

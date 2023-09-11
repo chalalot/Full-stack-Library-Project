@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Products</h1>
+     <u>
+      <% products.forEach(function(product) { %>
+        <li>
+        <a href="/vendor/view-products/<%= product._id %>"><%= product.name %></a>
+        </li>
+      <% }); %>
+    </u>
+  </body>
+</html>

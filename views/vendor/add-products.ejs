@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container form">
+      <h1> Create product </h1>
+      <form action="add-products" method="POST" enctype="multipart/form-data">   
+        <div> 
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required> 
+        </div>
+        <div>
+          <label for="price">Price</label>
+          <input type="number" id="price" name="price" required> 
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <textarea id="description" name="description"></textarea> 
+        </div>
+        <div>
+          <input type="file" name="image">
+        </div>
+        <button type="submit">Create</button>
+      </form>
+      <a href="/">Go back</a>
+    </div> 
+  </body>
+</html>
