@@ -67,6 +67,7 @@ app.get("/", checkAuthenticated, (req, res) => {
 // Set up router
 app.use("/checkin", checkinRouter);
 app.use("/profiles", profileRouter);
+app.use("/customer", customerRouter);
 
 // Run on port 3000
 app.listen(3000);
