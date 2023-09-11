@@ -12,17 +12,17 @@ function checkAuthenticated(req, res, next) {
     res.redirect("/checkin/login");
   }
 
-// router.get("/",checkAuthenticated, async(req,res)=>{
-//     try{
-//         const productslist = Product.find()
-//                         .then()
-//                         .catch((error) => console.log(error.message));
-//         res.render("/", { products: productslist })
-//     } catch (err){
-//         console.log(err)
-//         res.render("/");
-//     }
-// });
+router.get("/",checkAuthenticated, async(req,res)=>{
+    try{
+        const productslist = await Product.find()
+        .then()
+        .catch((error) => console.log(error.message));
+        res.render("/", { products: productslist });
+    } catch (err){
+        console.log(err)
+        res.render("/");
+    }
+});
 
 router.get("/products", checkAuthenticated, async (req, res) => {
   try {
