@@ -12,23 +12,12 @@ function checkAuthenticated(req, res, next) {
   res.redirect("/checkin/login");
 }
 
-router.get("/view-products", checkAuthenticated, async (req, res) => {
-  // Get a list of products of this vendor
-  try {
-    const products = await Product.Product.find({ vendor: req.user._id });
-    res.render("vendor/view-products", { products: products });
-  } catch (e) {
-    console.log(e);
-    res.redirect("/");
-  }
-});
-
 router.get("/add-products", checkAuthenticated, (req, res) => {
   // Render the form
   res.render("vendor/add-products.ejs", { error: "" });
 });
 
-router.get("/view-products/:id", checkAuthenticated, async (req, res) => {
+router.get("/:id", checkAuthenticated, async (req, res) => {
   // Get the product
   try {
     const product = await Product.Product.findById(req.params.id);
@@ -60,14 +49,14 @@ router.post(
       });
 
       await product.save();
-      res.redirect(`/vendor/view-products/${product._id}`); // Redirect to the product page
+      res.redirect(`/vendor/${product._id}`); // Redirect to the product page
     } catch (e) {
       // Redirect and show error
       req.flash("error", e.message);
-      const regex = /name: (.*)/;
-      const match = regex.exec(e.message);
-      const errorMessage = match[1];
-      res.render("vendor/add-products.ejs", { error: errorMessage });
+      // const regex = /name: (.*)/;
+      // const match = regex.exec(e.message);
+      // const errorMessage = match[1];
+      res.render("vendor/add-products.ejs", { error: e.message });
     }
   },
 );

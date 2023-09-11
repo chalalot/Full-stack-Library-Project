@@ -2,27 +2,14 @@ const express = require("express");
 const { Product } = require("./../models/product");
 const router = express.Router();
 
-
 // Check if user authenticated
 function checkAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next(); // If authenticated then move to the next task
-    }
-    // Redirect to login page
-    res.redirect("/checkin/login");
+  if (req.isAuthenticated()) {
+    return next(); // If authenticated then move to the next task
   }
-
-router.get("/",checkAuthenticated, async(req,res)=>{
-    try{
-        const productslist = await Product.find()
-        .then()
-        .catch((error) => console.log(error.message));
-        res.render("/", { products: productslist });
-    } catch (err){
-        console.log(err)
-        res.render("/");
-    }
-});
+  // Redirect to login page
+  res.redirect("/checkin/login");
+}
 
 router.get("/products", checkAuthenticated, async (req, res) => {
   try {
@@ -65,7 +52,5 @@ router.get("/products", checkAuthenticated, async (req, res) => {
     res.status(500).json({ error: true, message: "Internal Server Error" });
   }
 });
-
-
 
 module.exports = router;

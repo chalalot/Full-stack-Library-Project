@@ -27,22 +27,22 @@
     
     <div class="container products-area"> 
       <ul class="row">
-        <% products.forEach( funtion(product) =>{ %>
-          <li class="col">
-            <a href="/customer/view-product/<%= product._id %>"> <%= product.name %> </a>
-          </li>
+        <% products.forEach( (product) =>{ %>
+            <li class="col">
+              <a href="/customer/<%= product._id %>"> <%= product.name %> </a>
+            </li>
         <% }); %>
       </ul>
     </div>
 
-      <!-- <div class="user-cards" data-product-cards-container></div>
+    <div> class="user-cards" data-product-cards-container></div>
 
       <template data-product-template>
         <div class="card">
           <div class="header" data-header></div>
           <div class="body" data-body></div>
         </div>
-      </template> -->
+      </template>
     
     <%- include ('./../partials/footer')%>
 
