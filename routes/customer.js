@@ -1,5 +1,5 @@
 const express = require("express");
-const Product  = require("./../models/product");
+const Product = require("./../models/product");
 const router = express.Router();
 
 // Check if user authenticated
@@ -35,37 +35,22 @@ router.get("/search-result", checkAuthenticated, async (req, res) => {
     // $regex pattern matching string s in query
     // option is 'i' because it matches every letter doesn't matter it's capital or small
 
-    const total = await Product.countDocuments({
+    const total = await Product.Product.countDocuments({
       name: { $regex: search, $options: "i" },
     });
 
-    const reponse = {
+    const response = {
       error: false,
       total,
       page: page + 1,
       limit,
       products,
     };
-    // res.status(200).json(reponse);
-    res.render("customer/search-result", { products: products });
+    res.status(200).json(reponse);
   } catch (err) {
     console.log(err);
-    res.redirect("/");
+    res.status(500).json({ error: true, message: "Internal Server Error" });
   }
 });
-
-// router.get('/search-result',checkAuthenticated, async (req, res) => {
-//     try{
-//         const { resName } = req.query;
-   
-//         const products = await Restaurant.find({$text: {$search: resName}});  
-//         res.render('/customer/search-result', { productslist: products });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     } 
-// });
-
-
 
 module.exports = router;
