@@ -10,10 +10,13 @@ const profileRouter = require("./routes/profile.js");
 const passport = require("passport");
 const methodOverride = require("method-override");
 const multer = require("multer"); // For uploading files
+const cors = require("cors"); // for searching
+const dbConnect = require("./config/db");
+const customerRouter = require("./routes/customer");
 
 // Set up mongoose
 require("./config/db");
-
+dbConnect();
 // Set up express
 const app = express();
 app.set("view engine", "ejs");
@@ -32,6 +35,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
+app.use(cors());
+app.use(express.json());
+
 // connect to public
 app.use(express.static("public"));
 // Connect to images
