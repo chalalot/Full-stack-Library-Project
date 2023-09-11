@@ -12,7 +12,7 @@ function checkAuthenticated(req, res, next) {
     res.redirect("/checkin/login");
   }
 
-router.get("/products", async (req, res) => {
+router.get("/products", checkAuthenticated, async (req, res) => {
   try {
     const page = parseInt(req.query.page) - 1 || 0;
     const limit = parseInt(req.query.limit) || 5;

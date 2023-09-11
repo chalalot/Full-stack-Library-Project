@@ -11,11 +11,11 @@ const vendorRouter = require("./routes/vendor.js");
 const passport = require("passport");
 const methodOverride = require("method-override");
 const cors = require("cors"); // for searching
-const dbConnect = require("./config/db");
-const customerRouter = require("./routes/customer");
+const dbConnect = require("./config/db.js");
+const customerRouter = require("./routes/customer.js");
 
 // Set up mongoose
-require("./config/db");
+require("./config/db.js");
 dbConnect();
 // Set up express
 const app = express();

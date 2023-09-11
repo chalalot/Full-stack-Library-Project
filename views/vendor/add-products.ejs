@@ -16,16 +16,19 @@
         </div>
         <div>
           <label for="price">Price</label>
-          <input type="number" id="price" name="price" required> 
+          <input type="number" id="price" name="price" required min="0"> 
         </div>
         <div>
           <label for="description">Description</label>
-          <textarea id="description" name="description"></textarea> 
+          <textarea id="description" name="description" required></textarea> 
         </div>
         <div>
-          <input type="file" name="image">
+          <input type="file" name="image" required>
         </div>
         <button type="submit">Create</button>
+        <% if (error && error.length > 0) { %>
+          <%= error %>
+        <% } %>
       </form>
       <a href="/">Go back</a>
     </div> 

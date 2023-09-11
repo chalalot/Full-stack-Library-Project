@@ -31,6 +31,10 @@
     color: #1B2430;
 }
 
+.fa-solid.fa-cart-shopping{
+    font-size: 1.5em;
+}
+
 .row a{
     display: flex;
     justify-content: center;
