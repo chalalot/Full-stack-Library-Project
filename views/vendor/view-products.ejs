@@ -8,12 +8,12 @@
   </head>
   <body>
     <h1>Products</h1>
-     <u>
+     <ul>
       <% products.forEach(function(product) { %>
         <li>
         <a href="/vendor/view-products/<%= product._id %>"><%= product.name %></a>
         </li>
       <% }); %>
-    </u>
+    </ul>
   </body>
 </html>
