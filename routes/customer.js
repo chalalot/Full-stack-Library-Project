@@ -46,7 +46,7 @@ router.get("/search-result", checkAuthenticated, async (req, res) => {
       limit,
       products,
     };
-    res.status(200).json(reponse);
+    res.status(200).json(response);
   } catch (err) {
     console.log(err);
     res.redirect("/");
