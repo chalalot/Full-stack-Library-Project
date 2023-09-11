@@ -7,9 +7,9 @@ const flash = require("express-flash");
 const session = require("express-session");
 const checkinRouter = require("./routes/checkin.js");
 const profileRouter = require("./routes/profile.js");
+const vendorRouter = require("./routes/vendor.js");
 const passport = require("passport");
 const methodOverride = require("method-override");
-const multer = require("multer"); // For uploading files
 
 // Set up mongoose
 require("./config/db");
@@ -67,6 +67,7 @@ app.get("/", checkAuthenticated, (req, res) => {
 // Set up router
 app.use("/checkin", checkinRouter);
 app.use("/profiles", profileRouter);
+app.use("/vendor", vendorRouter);
 
 // Run on port 3000
 app.listen(3000);
