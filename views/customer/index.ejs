@@ -25,24 +25,24 @@
       </div>
     </div>
     
-    <!-- <div class="container products-area"> 
+    <div class="container products-area"> 
       <ul class="row">
         <% products.forEach( (product) =>{ %>
             <li class="col">
-              <a href="/customer/view-product/<%= product._id %>"> <%= product.name %> </a>
+              <a href="/customer/<%= product._id %>"> <%= product.name %> </a>
             </li>
         <% }); %>
       </ul>
-    </div> -->
+    </div>
 
-     <!-- <div class="user-cards" data-product-cards-container></div>
+    <div> class="user-cards" data-product-cards-container></div>
 
       <template data-product-template>
         <div class="card">
           <div class="header" data-header></div>
           <div class="body" data-body></div>
         </div>
-      </template> -->
+      </template>
     
     <%- include ('./../partials/footer')%>
 

@@ -13,6 +13,7 @@ const methodOverride = require("method-override");
 const cors = require("cors"); // for searching
 const dbConnect = require("./config/db.js");
 const customerRouter = require("./routes/customer.js");
+const Product = require("./models/product.js");
 
 // Set up mongoose
 require("./config/db.js");
@@ -59,12 +60,13 @@ function checkAuthenticated(req, res, next) {
 }
 
 // Index page: Change later
-app.get("/", checkAuthenticated, (req, res) => {
+app.get("/", checkAuthenticated, async (req, res) => {
+  const products = await Product.Product.find();
   // Already login
   if (req.user.__t === "Vendor") {
-    res.render("vendor/index.ejs", { user: req.user });
+    res.render("vendor/index.ejs", { user: req.user, products: products });
   } else if (req.user.__t === "Customer") {
-    res.render("customer/index.ejs", { user: req.user });
+    res.render("customer/index.ejs", { user: req.user, products: products });
   } else if (req.user.__t === "Shipper") {
     res.render("shipper/index.ejs", { user: req.user });
   }
