@@ -84,6 +84,7 @@ router.post("/:id", checkAuthenticated, async (req, res) => {
 
 router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
   try {
+    console.log("reached");
     // Render shopping cart with the orders from session
     res.render("customer/shopping-cart.ejs", { orders: req.session.order });
   } catch (e) {
