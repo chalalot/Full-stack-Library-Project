@@ -12,6 +12,15 @@ const hubSchema = Schema({
     required: true,
     unique: true,
   },
+  orders: [
+    {
+      order: {
+        type: Schema.Types.ObjectId,
+        ref: "Order",
+        required: true,
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("Hub", hubSchema);
