@@ -11,35 +11,17 @@ function checkAuthenticated(req, res, next) {
   res.redirect("/checkin/login");
 }
 
-router.get("/search-result", checkAuthenticated, async (req, res) => {
-  try {
-    const page = parseInt(req.query.page) - 1 || 0;
-    const limit = parseInt(req.query.limit) || 5;
-    const search = req.query.search || "";
-    let sort = req.query.sort || "price";
 
-    req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
-    let sortBy = {};
-    if (sort[1]) {
-      sortBy[sort[0]] = sort[1];
-    } else {
-      sortBy[sort[0]] = "asc";
+router.get('/search-result',checkAuthenticated, async (req, res) => {
+    try{
+        const products = await Product.Product.find({ name:req.query.searchQuery })
+        console.log(req.query.searchQuery);
+   
+        res.render('customer/search-result.ejs', { products: products });
+    } catch (err) {
+        console.log(err);
+        res.redirect("/");
     }
-
-    //define product
-    const products = await Product.Product.find({
-      name: { $regex: search, $options: "i" },
-    })
-      .sort(sortBy)
-      .skip(page * limit);
-    // $regex pattern matching string s in query
-    // option is 'i' because it matches every letter doesn't matter it's capital or small
-
-    res.render("customer/search-result.ejs", { products: products });
-  } catch (err) {
-    console.log(err);
-    res.redirect("/");
-  }
 });
 
 router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
