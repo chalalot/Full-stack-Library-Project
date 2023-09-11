@@ -1,7 +1,7 @@
 const express = require("express");
 const { Product } = require("./../models/product");
 const router = express.Router();
-const products = require("./../config/products.json");
+
 
 // Check if user authenticated
 function checkAuthenticated(req, res, next) {
@@ -11,6 +11,18 @@ function checkAuthenticated(req, res, next) {
     // Redirect to login page
     res.redirect("/checkin/login");
   }
+
+// router.get("/",checkAuthenticated, async(req,res)=>{
+//     try{
+//         const productslist = Product.find()
+//                         .then()
+//                         .catch((error) => console.log(error.message));
+//         res.render("/", { products: productslist })
+//     } catch (err){
+//         console.log(err)
+//         res.render("/");
+//     }
+// });
 
 router.get("/products", checkAuthenticated, async (req, res) => {
   try {

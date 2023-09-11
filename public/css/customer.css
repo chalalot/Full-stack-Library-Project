@@ -21,10 +21,9 @@
     width: 600px;
     height: 40px;
     display: flex;
-    text-align: center;
+    align-items: center;
     justify-content: center;
 }
-
 
 .fa-solid.fa-magnifying-glass{
     font-size: 1em;
@@ -49,6 +48,45 @@
 .row button:hover{
     font-size: larger;
     box-shadow: 2px 2px 3px rgb(0, 0, 0);
+}
+/*    profile   */
+.container-sm.profile{
+    margin: 10px;
+    height: 100px;
+    width: 400px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 3px black;
+}
+
+.container-sm.profile > .row{
+    width: 100%;
+    height: 100%;
+}
+
+.container-sm.profile .row .col-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-4 img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 0.5px solid black;
+}
+
+.container-sm.profile .row .col-8{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*    display product    */
+.products-area{
+    height: 700px;
 }
 
 .user-cards {
@@ -79,8 +117,16 @@
 
 @media (max-width: 768px) {
     /* Styles for screens up to 768px wide (e.g., tablets) */
-    row{
-        width: auto;
-    }
+    
+}
 
+@media (max-width: 576px) {
+    /* Styles for screens up to 576px wide (e.g., tablets) */
+    .container-sm.profile{
+        width: 100%;
+        margin: auto;
+    }
+    .container-sm.profile .row{
+        width: 100%;
+    }
 }

@@ -1,8 +1,7 @@
 const ProductCardTemplate = document.querySelector("[data-product-template]");
 const ProductCardContainer = document.querySelector("[data-product-cards-container]");
 const searchInput = document.querySelector("[data-search]");
-const product = require("./../models/product");
-const mongoose = require("./../config/db");
+
 
 
 let products = [];
@@ -15,7 +14,6 @@ searchInput.addEventListener("input", e => {
                           user.description.toLowerCase().includes(value);
         // pass class
         product.element.classList.toggle("hide", !isVisible);
-    
     }) 
     console.log(products);
 })
