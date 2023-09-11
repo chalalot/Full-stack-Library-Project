@@ -3,6 +3,15 @@ const { Product } = require("./../models/product");
 const router = express.Router();
 const products = require("./../config/products.json");
 
+// Check if user authenticated
+function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next(); // If authenticated then move to the next task
+    }
+    // Redirect to login page
+    res.redirect("/checkin/login");
+  }
+
 router.get("/products", async (req, res) => {
   try {
     const page = parseInt(req.query.page) - 1 || 0;
@@ -45,18 +54,6 @@ router.get("/products", async (req, res) => {
   }
 });
 
-//inser object for testing
-// const insertProduct = async() => {
-//     try{
-//         const docs = await Product.insertMany(products);
-//         return Promise.resolve(docs);
-//     } catch (err) {
-//         return Promise.reject(err);
-//     }
-// };
 
-// insertProduct()
-//     .then((docs) => console.log(docs))
-//     .catch((err) => console.log(err));
 
 module.exports = router;

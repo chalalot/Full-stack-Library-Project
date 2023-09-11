@@ -1,8 +1,9 @@
 <nav class="container-fluid nav">
-    <div class="search-wrapper">
-        <form action="/search" method="GET">
-            <label for="search">Search</label>
-            <input type="search" id="search" data-search>
+    <div class="container nav">
+        <form action="/products" method="GET" class="row">
+            <input type="search" id="search" placeholder="Search products..." data-search class="col-sm-9 col-8">
+            <button class="col-sm-1 col-2"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <a href="/view-added-product" class="col-sm-1 col-2"> <i class="fa-solid fa-cart-shopping"></i></a>
         </form>
     </div>
 </nav>
