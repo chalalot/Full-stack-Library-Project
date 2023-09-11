@@ -49,8 +49,67 @@ router.get("/search-result", checkAuthenticated, async (req, res) => {
     res.status(200).json(reponse);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: true, message: "Internal Server Error" });
+    res.redirect("/");
   }
+});
+
+router.get("/:id", checkAuthenticated, async (req, res) => {
+  // Render product
+  try {
+    console.log(req.params.id);
+    const product = await Product.Product.findById(req.params.id);
+    if (!product) {
+      res.redirect("/");
+    }
+
+    res.render("vendor/product.ejs", { product: product });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/");
+  }
+});
+
+// Buying the product
+router.post("/:id", checkAuthenticated, async (req, res) => {
+  // Add the product to session
+  const product = await Product.Product.findById(req.params.id);
+
+  if (!req.session.order) {
+    req.session.order = []; // If session order is empty then initialize a new one
+  }
+  req.session.order.push(product);
+  res.redirect("/"); // Might change this to go to shopping cart
+});
+
+router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
+  try {
+    console.log("reached");
+    // Render shopping cart with the orders from session
+    res.render("customer/shopping-cart.ejs", { orders: req.session.order });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/");
+  }
+});
+
+// Confirm order
+router.post("/shopping-cart", checkAuthenticated, async (req, res) => {
+  try {
+    const order = Product.Order({
+      customer: req.user._id,
+      products: req.session.order,
+      address: req.user.address,
+      orderData: new Date(),
+      status: "active",
+    });
+
+    await order.save();
+    // Clear session
+    req.session.order = [];
+  } catch (e) {
+    console.log(e);
+  }
+  res.redirect("/");
 });
 
 module.exports = router;
