@@ -1,11 +1,13 @@
 footer{
-    padding: 10px;
-    height: 400px;
+    padding: 30px;
+    height: auto;
     background-color: #1B2430;
     color: white;
 }
 
-
+.custom-icon {
+    margin-right: 10px;
+}
 .clr{
     text-decoration: none;
     color: black;
