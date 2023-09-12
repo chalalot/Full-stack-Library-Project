@@ -1,5 +1,6 @@
 footer{
     padding: 30px;
+    padding-bottom: 40px;
     height: auto;
     background-color: #1B2430;
     color: white;
@@ -21,19 +22,6 @@ a.btn-none {
     color: white;
 }
 
-/* .row.nav-register{
-    list-style-type: none;
-} */
-
-/* .container.nav-register{
-    width: 400px;
-    background-color: #1B2430;
-} */
-
-/* .col.nav-register{
-    font-size: 20px;
-    cursor: pointer;
-} */
 
 .clr:hover{
     text-decoration: underline;
@@ -50,7 +38,6 @@ a.btn-none {
 }
 
 
-/* testing */
 .custom-nav {
     background-color: #1B2430;
     padding: 20px;

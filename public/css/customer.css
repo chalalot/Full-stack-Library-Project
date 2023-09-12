@@ -17,7 +17,7 @@
     justify-content: center;
     align-items: center;
 }
-.row{
+.row-search{
     width: 600px;
     height: 40px;
     display: flex;
@@ -34,7 +34,7 @@
     font-size: 1.5em;
 }
 
-.row a{
+.row-search a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,3 +177,4 @@
         width: 100%;
     }
 }
+
