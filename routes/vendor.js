@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const upload = require("./../config/multer.js");
 const Product = require("./../models/product.js");
+const { error } = require("console");
 
 // Check if user authenticated
 function checkAuthenticated(req, res, next) {
@@ -60,5 +61,26 @@ router.post(
     }
   },
 );
+
+// search product
+router.get("/search", checkAuthenticated, async (req, res) => {
+  try {
+    const searchQuery = req.query.searchQuery; // Access the searchQuery parameter from the URL
+
+    const product = Product.Product.find({ name:searchQuery});
+
+    // Now you can use the value of searchQuery in your code
+    console.log("Search Query:", searchQuery);
+
+    // Rest of your code for processing the search query
+
+    res.render("vendor/index.ejs", { products : product });
+
+  } catch (err) {
+    console.error("Error:", err);
+    res.redirect("/");
+  }
+});
+
 
 module.exports = router;

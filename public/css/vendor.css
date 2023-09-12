@@ -1,0 +1,19 @@
+.container-fluid.vender-nav { 
+    height: 100px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1B2430;
+}
+
+.container-fluid.vender-nav .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    margin: 0;
+    padding: 0;
+}
