@@ -24,7 +24,25 @@
         </div>
       </div>
     </div>
+
     
+      
+    <form class="container"  action="customer/filter-amount" method="POST">
+      <div>
+        <label class="text-black" for="maximum">Filter maximum:</label> 
+        <input type="text" id="maximum" placeholder="Enter amount..." name="maximum" class="text-black">
+      </div>  
+
+      <div>
+        <label class="text-black" for="minimum">Filter minimum:</label>
+        <input type="text" id="minimum" placeholder="Enter amount..." name="minimum" class="text-black">
+      </div>
+        <button type="submit" class="btn btn-primary">search</button>
+    </form>
+    
+
+
+
     <div class="container-fluid products-area"> 
       <ul class="row">
         <% products.forEach( (product) =>{ %>

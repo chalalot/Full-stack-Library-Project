@@ -91,4 +91,27 @@ router.post("/:id", checkAuthenticated, async (req, res) => {
   res.redirect("/"); // Might change this to go to shopping cart
 });
 
+
+// filter the price
+router.post("/filter-amount",checkAuthenticated, async(req,res)=>{
+    const minimum = req.body.minium;
+    const maximum = req.body.maximum;
+
+    const products = Product.Product.find({});
+    const productFilterd = [];
+
+    products.forEach( product => {
+        if(product.price >= minimum && product.price <= maximum){
+            productFilterd.push(product);
+        }
+    })
+
+    // const filteredProducts = products.filter((product) => {
+    //     return product.price >= minimum && product.price <= maximum;
+    // });
+
+    res.render("customer/search-result",{ products: productFilterd})
+});
+
+
 module.exports = router;
