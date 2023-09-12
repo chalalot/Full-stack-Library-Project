@@ -1,62 +1,84 @@
 const express = require("express");
-const { Product } = require("./../models/product");
+const Product = require("./../models/product");
 const router = express.Router();
-const products = require("./../config/products.json");
 
-router.get("/products", async (req, res) => {
-  try {
-    const page = parseInt(req.query.page) - 1 || 0;
-    const limit = parseInt(req.query.limit) || 5;
-    const search = req.query.search || "";
-    let sort = req.query.sort || "price";
+// Check if user authenticated
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next(); // If authenticated then move to the next task
+  }
+  // Redirect to login page
+  res.redirect("/checkin/login");
+}
 
-    req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
-    let sortBy = {};
-    if (sort[1]) {
-      sortBy[sort[0]] = sort[1];
-    } else {
-      sortBy[sort[0]] = "asc";
+
+router.get('/search-result',checkAuthenticated, async (req, res) => {
+    try{
+        const products = await Product.Product.find({ name:req.query.searchQuery })
+        console.log(req.query.searchQuery);
+   
+        res.render('customer/search-result.ejs', { products: products });
+    } catch (err) {
+        console.log(err);
+        res.redirect("/");
     }
+});
 
-    //define product
-    const products = await Product.find({
-      name: { $regex: search, $options: "i" },
-    })
-      .sort(sortBy)
-      .skip(page * limit);
-    // $regex pattern matching string s in query
-    //option is 'i' because it matches every letter doesn't matter it's capital or small
-
-    const total = await Product.countDocuments({
-      name: { $regex: search, $options: "i" },
-    });
-
-    const reponse = {
-      error: false,
-      total,
-      page: page + 1,
-      limit,
-      products,
-    };
-    res.status(200).json(reponse);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: true, message: "Internal Server Error" });
+router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
+  try {
+    // Render shopping cart with the orders from session
+    res.render("customer/shopping-cart.ejs", { orders: req.session.order });
+  } catch (e) {
+    console.log(e);
   }
 });
 
-//inser object for testing
-// const insertProduct = async() => {
-//     try{
-//         const docs = await Product.insertMany(products);
-//         return Promise.resolve(docs);
-//     } catch (err) {
-//         return Promise.reject(err);
-//     }
-// };
+// Confirm order
+router.post("/shopping-cart", checkAuthenticated, async (req, res) => {
+  try {
+    const order = Product.Order({
+      customer: req.user._id,
+      products: req.session.order,
+      address: req.user.address,
+      orderData: new Date(),
+      status: "active",
+    });
 
-// insertProduct()
-//     .then((docs) => console.log(docs))
-//     .catch((err) => console.log(err));
+    await order.save();
+    // Clear session
+    req.session.order = [];
+  } catch (e) {
+    console.log(e);
+  }
+  res.redirect("/");
+});
+
+// Get product information
+router.get("/:id", checkAuthenticated, async (req, res) => {
+  // Render product
+  try {
+    const product = await Product.Product.findById(req.params.id);
+    if (!product) {
+      res.redirect("/");
+    }
+
+    res.render("vendor/product.ejs", { product: product });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/");
+  }
+});
+
+// Buying the product
+router.post("/:id", checkAuthenticated, async (req, res) => {
+  // Add the product to session
+  const product = await Product.Product.findById(req.params.id);
+
+  if (!req.session.order) {
+    req.session.order = []; // If session order is empty then initialize a new one
+  }
+  req.session.order.push(product);
+  res.redirect("/"); // Might change this to go to shopping cart
+});
 
 module.exports = router;

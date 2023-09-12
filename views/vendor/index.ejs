@@ -21,7 +21,13 @@
       <button type="submit">Log Out</button>
     </form>
 
-    <a href="/vendor/view-products">View products</a>
+    <h1>Selling</h1>
+    <% products.forEach( (product) =>{ %>
+      <li class="col">
+        <a href="/vendor/<%= product._id %>"> <%= product.name %> </a>
+      </li>
+    <% }); %>
+
     <a href="/vendor/add-products">Add products</a>
   </body>
 </html>

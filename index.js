@@ -11,11 +11,12 @@ const vendorRouter = require("./routes/vendor.js");
 const passport = require("passport");
 const methodOverride = require("method-override");
 const cors = require("cors"); // for searching
-const dbConnect = require("./config/db");
-const customerRouter = require("./routes/customer");
+const dbConnect = require("./config/db.js");
+const customerRouter = require("./routes/customer.js");
+const Product = require("./models/product.js");
 
 // Set up mongoose
-require("./config/db");
+require("./config/db.js");
 dbConnect();
 // Set up express
 const app = express();
@@ -59,14 +60,21 @@ function checkAuthenticated(req, res, next) {
 }
 
 // Index page: Change later
-app.get("/", checkAuthenticated, (req, res) => {
+app.get("/", checkAuthenticated, async (req, res) => {
   // Already login
-  if (req.user.__t === "Vendor") {
-    res.render("vendor/index.ejs", { user: req.user });
-  } else if (req.user.__t === "Customer") {
-    res.render("customer/index.ejs", { user: req.user });
-  } else if (req.user.__t === "Shipper") {
-    res.render("shipper/index.ejs", { user: req.user });
+  try {
+    if (req.user.__t === "Vendor") {
+      const products = await Product.Product.find({ vendor: req.user._id });
+      res.render("vendor/index.ejs", { user: req.user, products: products });
+    } else if (req.user.__t === "Customer") {
+      const products = await Product.Product.find();
+      res.render("customer/index.ejs", { user: req.user, products: products });
+    } else if (req.user.__t === "Shipper") {
+      res.render("shipper/index.ejs", { user: req.user });
+    }
+  } catch (e) {
+    console.log(e);
+    res.redirect("/checkin/login");
   }
 });
 
