@@ -25,17 +25,18 @@
       </div>
     </div>
     
-    <div class="container products-area"> 
+    <div class="container-fluid products-area"> 
       <ul class="row">
         <% products.forEach( (product) =>{ %>
-            <li class="col">
+            <li class="col-lg-2 col-md-3">
+              <img src="/<%= product.image %>" alt="profile picture">
               <a href="/customer/<%= product._id %>"> <%= product.name %> </a>
             </li>
         <% }); %>
       </ul>
     </div>
 
-    <div> class="user-cards" data-product-cards-container></div>
+    <div class="user-cards" data-product-cards-container></div>
 
       <template data-product-template>
         <div class="card">

@@ -1,5 +1,6 @@
 const express = require("express");
 const Product = require("./../models/product");
+const { render } = require("ejs");
 const router = express.Router();
 
 // Check if user authenticated
@@ -15,7 +16,6 @@ function checkAuthenticated(req, res, next) {
 router.get('/search-result',checkAuthenticated, async (req, res) => {
     try{
         const products = await Product.Product.find({ name:req.query.searchQuery })
-        console.log(req.query.searchQuery);
    
         res.render('customer/search-result.ejs', { products: products });
     } catch (err) {
@@ -30,6 +30,7 @@ router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
     res.render("customer/shopping-cart.ejs", { orders: req.session.order });
   } catch (e) {
     console.log(e);
+    res.redirect("/");
   }
 });
 

@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/customer.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5c0d7c8bb2.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <%- include ('./nav-customer') %>
 
+
+    <div class="container">
+        <% if (orders && orders.length > 0) { %>
+            <ul class="row">
+                <!-- Loop through the orders array and generate a list item for each order -->
+                <% orders.forEach((order) => { %>
+                    <li>
+                        <!-- Display order details -->
+                        <strong>Product Name:</strong> <%= order.product.name %><br>
+                        <strong>Address:</strong> <%= order.address %><br>
+                        <strong>Order Date:</strong> $<%= order.orderDate %><br>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p>Your shopping cart is empty.</p>
+        <% } %>
+    </div>
+
+
+    <%- include ('./../partials/footer')%>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="/js/customer.js" defer></script>
+</body>
+</html>

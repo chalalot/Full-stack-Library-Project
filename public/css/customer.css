@@ -97,6 +97,30 @@
     margin-top: 1rem;
 }
 
+.container-fluid.products-area .row .col-lg-2.col-md-3 {
+    margin: 25px;
+    border: 1px solid black;
+    height: 300px;
+}
+
+.container-fluid.products-area .row .col-lg-2.col-md-3:hover {
+    box-shadow: 1px 1px 5px black;
+}
+
+.container-fluid.products-area .row .col-lg-2.col-md-3  img {
+    width: 100px;
+}
+
+.container-fluid.products-area .row {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
 .card {
     border: 1px solid black;
     background-color: white;
