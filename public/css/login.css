@@ -5,3 +5,12 @@
     justify-content: center;
     align-items: center;
 }
+
+a.btn-none:hover {
+    border: 3px solid black; 
+}
+
+a.btn-none {
+    margin-top: 30px;
+}
+
