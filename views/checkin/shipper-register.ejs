@@ -6,33 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   </head>
   <body>
 
     <%- include ('./../partials/nav-register')%>
-    <div class="container form">
-      <h1> Shipper Register </h1>
+    <div class="container form border border-dark rounded p-2 mt-5 mb-5 ">
+      <h1> Shipper Registration</h1>
       <form action="shipper-register" method="POST" >   
         <div> 
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" required> 
+          <label for="username" class="form-label item-center mt-4 ">Username</label>
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="bi bi-person-fill"></i>
+            </span>
+            <input type="text" id="username" name="username" class="form-control" required> 
+          </div>
+          
         </div>
         <div>
-          <label for="password">Password</label>
-          <input type="text" id="password" name="password" required> 
+          <label for="password" class="form-label mt-2"></label>Password</label>
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="bi bi-key-fill"></i>
+            </span>
+            <input type="text" id="password" name="password" class="form-control" required> 
+          </div>
+          
         </div>
 
         <!--Show a drop down menu of hubs-->
-        <label for="hub">Hub</label>
-        <select name="hub" id="hub">
+        <label for="hub" class="form-label mt-2"></label>Hub</label>
+        <select name="hub" id="hub" class="form-select">
           <option value="">Select a Hub</option>
           <% hubs.forEach(function(hub) { %>
             <option value="<%= hub._id %>"><%= hub.name %></option>
           <% }); %>
         </select>
-        <button type="submit">Register</button>
+        <button type="submit" class="btn btn-dark mt-5 mx-auto d-block">Register</button>
       </form>
-      <a href="login">Login</a>
+      <a href="login" class="btn btn-none ">Login</a>
     </div>
 
 

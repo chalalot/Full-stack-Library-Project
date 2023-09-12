@@ -5,29 +5,39 @@ footer{
     color: white;
 }
 
+a.btn-none:hover {
+    border: 3px solid black; 
+}
+
+a.btn-none {
+    margin-top: 30px;
+}
+
 .custom-icon {
     margin-right: 10px;
 }
 .clr{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
-.row.nav-register{
+/* .row.nav-register{
     list-style-type: none;
-}
+} */
 
-.container.nav-register{
+/* .container.nav-register{
     width: 400px;
-}
+    background-color: #1B2430;
+} */
 
-.col.nav-register{
+/* .col.nav-register{
     font-size: 20px;
     cursor: pointer;
-}
+} */
 
 .clr:hover{
     text-decoration: underline;
+    text-decoration-color: white;
 }
 
 
@@ -37,4 +47,12 @@ footer{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+/* testing */
+.custom-nav {
+    background-color: #1B2430;
+    padding: 20px;
+    height: auto;
 }
