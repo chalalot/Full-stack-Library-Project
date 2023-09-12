@@ -53,18 +53,15 @@ const orderSchema = Schema({
     type: Date,
     default: Date.now,
   },
+  totalCost: {
+    type: Number,
+    required: true,
+  },
   status: {
     type: String,
     enum: ["active", "delivered", "canceled"],
     default: "active",
   },
-});
-
-// Calculate total price
-orderSchema.virtual("total").get(function () {
-  return this.products.reduce((total, product) => {
-    return total + product.price;
-  }, 0);
 });
 
 const Product = mongoose.model("Product", productSchema);

@@ -25,8 +25,8 @@
             <a href="/shipper/<%= order._id %>">
               <h1><%= order.customer %></h1>
               <h1><%= order.address %></h1>
-              <h1><%= order.orderDate %></h1>
-              <h1><%= order.total %></h1>
+              <h1><%= order.orderDate.toLocaleDateString() %></h1>
+              <h1><%= order.totalCost %></h1>
             </a>
           <% }); %> 
         </ul>
