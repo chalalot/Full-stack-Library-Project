@@ -26,6 +26,22 @@ router.get("/search-result", checkAuthenticated, async (req, res) => {
   }
 });
 
+// filter the price
+router.post("/filter-amount", checkAuthenticated, async (req, res) => {
+  try {
+    const products = await Product.Product.find({
+      price: {
+        $gt: req.body.minimum,
+        $lt: req.body.maximum,
+      },
+    });
+    res.render("customer/search-result", { products: products });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/");
+  }
+});
+
 router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
   try {
     if (!req.session.order) {
@@ -108,29 +124,5 @@ router.post("/:id", checkAuthenticated, async (req, res) => {
   req.session.order.push(product);
   res.redirect("/"); // Might change this to go to shopping cart
 });
-
-
-// filter the price
-router.post("/filter-amount",checkAuthenticated, async(req,res)=>{
-    const minimum = Number(req.body.minium);
-    const maximum = Number(req.body.maximum);
-
-
-    const products = await Product.Product.find({});
-    // const productFilterd = [];
-
-    // products.forEach( product => {
-    //     if(product.price >= minimum && product.price <= maximum){
-    //         productFilterd.push(product);
-    //     }
-    // })
-
-    const filteredProducts = products.filter((product) => {
-        return product.price >= minimum && product.price <= maximum;
-    });
-
-    res.render("customer/search-result",{ products: filteredProducts})
-});
-
 
 module.exports = router;
