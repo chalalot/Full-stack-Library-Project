@@ -17,7 +17,6 @@ router.get("/search-result", checkAuthenticated, async (req, res) => {
     const products = await Product.Product.find({
       name: req.query.searchQuery,
     });
-    console.log(req.query.searchQuery);
 
     res.render("customer/search-result.ejs", { products: products });
   } catch (err) {
@@ -72,7 +71,7 @@ router.get("/:id", checkAuthenticated, async (req, res) => {
       res.redirect("/");
     }
 
-    res.render("vendor/product.ejs", { product: product });
+    res.render("customer/product.ejs", { product: product });
   } catch (e) {
     console.log(e);
     res.redirect("/");
