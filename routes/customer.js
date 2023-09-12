@@ -72,7 +72,7 @@ router.get("/:id", checkAuthenticated, async (req, res) => {
       res.redirect("/");
     }
 
-    res.render("vendor/product.ejs", { product: product });
+    res.render("customer/product.ejs", { product: product });
   } catch (e) {
     console.log(e);
     res.redirect("/");
