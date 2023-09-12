@@ -74,9 +74,10 @@ app.get("/", checkAuthenticated, async (req, res) => {
       const hubWithOrders = await Hub.findById(req.user.hub).populate(
         "orders.order",
       );
-      const orders = hubWithOrders.orders.map(
-        (orderObject) => orderObject.order,
-      );
+      const orders = hubWithOrders.orders
+        .filter((orderObject) => orderObject.order !== null) // Filter out null orders
+        .map((orderObject) => orderObject.order);
+
       res.render("shipper/index.ejs", { user: req.user, orders: orders });
     }
   } catch (e) {

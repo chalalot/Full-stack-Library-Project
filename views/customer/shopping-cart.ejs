@@ -13,24 +13,27 @@
     <%- include ('./nav-customer') %>
 
 
-    <div class="container">
-        <% if (orders && orders.length > 0) { %>
-            <ul class="row">
-                <!-- Loop through the orders array and generate a list item for each order -->
-                <% orders.forEach((order) => { %>
-                    <li>
-                        <!-- Display order details -->
-                        <strong>Product Name:</strong> <%= order.product.name %><br>
-                        <strong>Address:</strong> <%= order.address %><br>
-                        <strong>Order Date:</strong> $<%= order.orderDate %><br>
-                    </li>
-                <% }); %>
-            </ul>
-        <% } else { %>
-            <p>Your shopping cart is empty.</p>
-        <% } %>
-    </div>
+<div class="container">
+    <% if (products && products.length > 0) { %>
+        <ul class="row">
+            <!-- Loop through the orders array and generate a list item for each order -->
+            <% products.forEach((product) => { %>
+                <li>
+                    <!-- Display order details -->
+                    <strong>Product Name:</strong> <%= product.name %><br>
+                    <strong>Product Price</strong> $<%= product.price %><br>
+                </li>
+            <% }); %>
+        </ul>
+        <h1><%= total %></h1>
+    <% } else { %>
+        <p>Your shopping cart is empty.</p>
+    <% } %>
+</div>
 
+    <form action="shopping-cart" method="POST">
+      <button type="submit">Buy!</button>
+    </form>
 
     <%- include ('./../partials/footer')%>
 

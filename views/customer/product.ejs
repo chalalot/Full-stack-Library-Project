@@ -15,20 +15,18 @@
     <div class="container details">
         <div class="row">
             <div class="col-6"> 
-                <img src="/<%=product.image%>" alt="product image" style="width: 200px;">
+                <img src="/<%= product.image %>" alt="product image" style="width: 200px;">
             </div>
             <div class="col-6">
                 <Strong>Product Name:</Strong><%= product.name %> </br>
                 <Strong>Product Price:</Strong><%= product.price %> </br>
-                <Strong>Product Description:</Strong> <%= product.description %>
-            </div>
+          <Strong>Product Description:</Strong> <%= product.description %> </br>
+          <Strong>Vendor:</Strong><%= vendor.username %> 
+          </div>
         </div>
         <div class="row">
-            <form action="/shopping-cart" method="POST" class="col">
-                <button>Add to cart</button>
-            </form>
-            <form action="/<%=product._id%>" method="POST" class="col">
-                <button>Buy Now</button>
+        <form action="<%= product.id %>" method="POST" class="col">
+                <button type="submit">Add to cart</button>
             </form>
         </div>
     </div>

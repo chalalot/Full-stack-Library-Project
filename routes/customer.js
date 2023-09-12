@@ -28,8 +28,19 @@ router.get("/search-result", checkAuthenticated, async (req, res) => {
 
 router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
   try {
+    if (!req.session.order) {
+      req.session.order = []; // If session order is empty then initialize a new one
+    }
+    // Get total cost of products
+    let total = req.session.order.reduce(
+      (total, product) => total + product.price,
+      0,
+    );
     // Render shopping cart with the orders from session
-    res.render("customer/shopping-cart.ejs", { orders: req.session.order });
+    res.render("customer/shopping-cart.ejs", {
+      products: req.session.order,
+      total: total,
+    });
   } catch (e) {
     console.log(e);
     res.redirect("/");
@@ -43,11 +54,18 @@ router.post("/shopping-cart", checkAuthenticated, async (req, res) => {
     const random = Math.floor(Math.random() * (await Hub.countDocuments()));
     const hub = await Hub.findOne().skip(random);
 
+    // Get total cost of products
+    let total = req.session.order.reduce(
+      (total, product) => total + product.price,
+      0,
+    );
+
     const order = Product.Order({
       customer: req.user._id,
-      products: req.session.order,
+      products: req.session.order.map((product) => ({ product: product._id })),
       address: req.user.address,
-      orderData: new Date(),
+      orderDate: new Date(),
+      totalCost: total,
       status: "active",
     });
 
