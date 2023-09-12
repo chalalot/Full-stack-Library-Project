@@ -39,7 +39,7 @@ router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
 router.post("/shopping-cart", checkAuthenticated, async (req, res) => {
   try {
     // Get a random hub
-    const random = Math.floor(Math.random() * Hub.countDocuments());
+    const random = Math.floor(Math.random() * (await Hub.countDocuments()));
     const hub = await Hub.findOne().skip(random);
 
     const order = Product.Order({
