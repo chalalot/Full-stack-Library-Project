@@ -112,23 +112,24 @@ router.post("/:id", checkAuthenticated, async (req, res) => {
 
 // filter the price
 router.post("/filter-amount",checkAuthenticated, async(req,res)=>{
-    const minimum = req.body.minium;
-    const maximum = req.body.maximum;
+    const minimum = Number(req.body.minium);
+    const maximum = Number(req.body.maximum);
 
-    const products = Product.Product.find({});
-    const productFilterd = [];
 
-    products.forEach( product => {
-        if(product.price >= minimum && product.price <= maximum){
-            productFilterd.push(product);
-        }
-    })
+    const products = await Product.Product.find({});
+    // const productFilterd = [];
 
-    // const filteredProducts = products.filter((product) => {
-    //     return product.price >= minimum && product.price <= maximum;
-    // });
+    // products.forEach( product => {
+    //     if(product.price >= minimum && product.price <= maximum){
+    //         productFilterd.push(product);
+    //     }
+    // })
 
-    res.render("customer/search-result",{ products: productFilterd})
+    const filteredProducts = products.filter((product) => {
+        return product.price >= minimum && product.price <= maximum;
+    });
+
+    res.render("customer/search-result",{ products: filteredProducts})
 });
 
 
