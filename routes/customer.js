@@ -1,6 +1,7 @@
 const express = require("express");
 const Product = require("./../models/product");
 const Hub = require("./../models/hub");
+const User = require("./../models/user");
 const router = express.Router();
 
 // Check if user authenticated
@@ -70,8 +71,8 @@ router.get("/:id", checkAuthenticated, async (req, res) => {
     if (!product) {
       res.redirect("/");
     }
-
-    res.render("customer/product.ejs", { product: product });
+    const vendor = await User.Vendor.findById(product.vendor);
+    res.render("customer/product.ejs", { product: product, vendor: vendor });
   } catch (e) {
     console.log(e);
     res.redirect("/");
