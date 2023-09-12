@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Shipper's Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Shipper</h1>
+    <h1>Hi <%= user.username %></h1>
+    <h1><%= user.__t %></h1>
+    <img src="/<%= user.profilePicture %>" alt="profile picture">
+    
+    <form action="/profiles/change-avatar" method="POST" enctype="multipart/form-data"> 
+      <input type="file" name="image">
+      <input type="submit" name="" value="Change">  
+    </form>
+
+    <form action="checkin/logout?_method=DELETE" method="POST"> 
+      <button type="submit">Log Out</button>
+    </form>  
+  </body>
+</html>
