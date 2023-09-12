@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/customer.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5c0d7c8bb2.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <%- include ('./nav-customer') %>
+
+    <div class="container details">
+        <div class="row">
+            <div class="col-6"> 
+                <img src="/<%=product.image%>" alt="product image" style="width: 200px;">
+            </div>
+            <div class="col-6">
+                <Strong>Product Name:</Strong><%= product.name %> </br>
+                <Strong>Product Price:</Strong><%= product.price %> </br>
+                <Strong>Product Description:</Strong> <%= product.description %>
+            </div>
+        </div>
+        <div class="row">
+            <form action="/shopping-cart" method="POST" class="col">
+                <button>Add to cart</button>
+            </form>
+            <form action="/<%=product._id%>" method="POST" class="col">
+                <button>Buy Now</button>
+            </form>
+        </div>
+    </div>
+
+    <%- include ('./../partials/footer')%>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="/js/customer.js" defer></script>
+</body>
+</html>

@@ -121,6 +121,28 @@
     height: auto;
 }
 
+/*         product detail            */
+
+.container.details {
+    height: 700px;
+    color: black;
+}
+
+.container.details .row .col-6{
+    color: black;
+}
+
+.container.details .row {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+
+.container.details strong{
+    color: black;
+}
+
 .card {
     border: 1px solid black;
     background-color: white;
