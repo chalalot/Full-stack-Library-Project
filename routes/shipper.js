@@ -13,14 +13,28 @@ function checkAuthenticated(req, res, next) {
 
 router.get("/:id", checkAuthenticated, async (req, res) => {
   try {
-    const order = await Product.Order.findById(req.params.id);
+    const order = await Product.Order.findById(req.params.id).populate(
+      "products.product",
+    );
 
     if (!order) {
-      res.redirect("/");
+      return res.redirect("/");
     }
+    res.render("shipper/order.ejs", { order: order });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/");
+  }
+});
 
-    const customer = await User.Customer.findById(order.customer);
-    res.render("shipper/order.ejs", { order: order, customer: customer });
+router.get("/product/:id", checkAuthenticated, async (req, res) => {
+  try {
+    const product = await Product.Product.findById(req.params.id);
+    if (!product) {
+      return res.redirect("/");
+    }
+    const vendor = await User.Vendor.findById(product.vendor);
+    res.render("shipper/product.ejs", { product: product, vendor: vendor });
   } catch (e) {
     console.log(e);
     res.redirect("/");

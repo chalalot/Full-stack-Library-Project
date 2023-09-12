@@ -26,14 +26,13 @@
             <% }); %>
         </ul>
         <h1><%= total %></h1>
+          <form action="shopping-cart" method="POST">
+      <button type="submit">Buy!</button>
+    </form>
     <% } else { %>
         <p>Your shopping cart is empty.</p>
     <% } %>
 </div>
-
-    <form action="shopping-cart" method="POST">
-      <button type="submit">Buy!</button>
-    </form>
 
     <%- include ('./../partials/footer')%>
 

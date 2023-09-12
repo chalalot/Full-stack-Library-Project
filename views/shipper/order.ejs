@@ -7,16 +7,18 @@
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Order Details</h1>
-    <h1><%= customer.name %></h1>
-    <h1><%= order.address %></h1>
-    <h1><%= order.orderDate.toLocaleDateString() %></h1>
-    <h1><%= order.total %></h1>
-    <ul>
-      <% order.products.forEach(function(product) { %>
-        <h2><%= product %></h2>
-        <h2></h2>
-      <% }); %> 
-    </ul>
+<h1>Order Details</h1>
+<h1><%= order.customer %></h1>
+<h1><%= order.address %></h1>
+<h1><%= order.orderDate.toLocaleDateString() %></h1>
+<h1><%= order.totalCost %></h1>
+<ul>
+  <% order.products.forEach(function (orderProduct) { %>
+      <a href="/shipper/product/<%= orderProduct.product._id %>">link</a>
+      <h2>Name: <%= orderProduct.product.name %></h2>
+      <h2>Price: <%= orderProduct.product.price %></h2>
+
+  <% }); %>
+</ul>
   </body>
-</html>
+</html> 

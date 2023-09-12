@@ -61,7 +61,6 @@ function checkAuthenticated(req, res, next) {
   res.redirect("/checkin/login");
 }
 
-// Index page: Change later
 app.get("/", checkAuthenticated, async (req, res) => {
   // Already login
   try {
