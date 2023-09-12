@@ -128,8 +128,10 @@ router.post(
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       // Redirect back to register page with error
+      const hubs = await Hub.find();
       return res.render("checkin/shipper-register", {
         errors: errors.array(),
+        hubs: hubs,
       });
     }
 
