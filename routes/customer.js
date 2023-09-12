@@ -1,5 +1,6 @@
 const express = require("express");
 const Product = require("./../models/product");
+const Hub = require("./../models/hub");
 const router = express.Router();
 
 // Check if user authenticated
@@ -11,17 +12,18 @@ function checkAuthenticated(req, res, next) {
   res.redirect("/checkin/login");
 }
 
+router.get("/search-result", checkAuthenticated, async (req, res) => {
+  try {
+    const products = await Product.Product.find({
+      name: req.query.searchQuery,
+    });
+    console.log(req.query.searchQuery);
 
-router.get('/search-result',checkAuthenticated, async (req, res) => {
-    try{
-        const products = await Product.Product.find({ name:req.query.searchQuery })
-        console.log(req.query.searchQuery);
-   
-        res.render('customer/search-result.ejs', { products: products });
-    } catch (err) {
-        console.log(err);
-        res.redirect("/");
-    }
+    res.render("customer/search-result.ejs", { products: products });
+  } catch (err) {
+    console.log(err);
+    res.redirect("/");
+  }
 });
 
 router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
@@ -36,6 +38,10 @@ router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
 // Confirm order
 router.post("/shopping-cart", checkAuthenticated, async (req, res) => {
   try {
+    // Get a random hub
+    const random = Math.floor(Math.random() * Hub.countDocuments());
+    const hub = await Hub.findOne().skip(random);
+
     const order = Product.Order({
       customer: req.user._id,
       products: req.session.order,
@@ -44,7 +50,10 @@ router.post("/shopping-cart", checkAuthenticated, async (req, res) => {
       status: "active",
     });
 
+    // Push order to random hub
     await order.save();
+    hub.orders.push({ order: order._id });
+    await hub.save();
     // Clear session
     req.session.order = [];
   } catch (e) {

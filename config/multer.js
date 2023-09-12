@@ -16,7 +16,11 @@ var storage = multer.diskStorage({
 var upload = multer({
   storage: storage,
   fileFilter: function (req, file, cb) {
-    if (file.mimetype == "image/png" || file.mimetype == "image/jpg") {
+    if (
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpeg" ||
+      file.mimetype == "image/jpg"
+    ) {
       cb(null, true);
     } else {
       console.log("only jpg or png supported");

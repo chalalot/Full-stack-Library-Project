@@ -14,6 +14,7 @@ const cors = require("cors"); // for searching
 const dbConnect = require("./config/db.js");
 const customerRouter = require("./routes/customer.js");
 const Product = require("./models/product.js");
+const Hub = require("./models/hub.js");
 
 // Set up mongoose
 require("./config/db.js");
@@ -70,7 +71,13 @@ app.get("/", checkAuthenticated, async (req, res) => {
       const products = await Product.Product.find();
       res.render("customer/index.ejs", { user: req.user, products: products });
     } else if (req.user.__t === "Shipper") {
-      res.render("shipper/index.ejs", { user: req.user });
+      const hubWithOrders = await Hub.findById(req.user.hub).populate(
+        "orders.order",
+      );
+      const orders = hubWithOrders.orders.map(
+        (orderObject) => orderObject.order,
+      );
+      res.render("shipper/index.ejs", { user: req.user, orders: orders });
     }
   } catch (e) {
     console.log(e);
