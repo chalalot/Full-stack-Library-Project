@@ -8,13 +8,14 @@
   </head>
   <body>
     <h1>Order Details</h1>
-    <h1><%= order.customer %></h1>
+    <h1><%= customer.name %></h1>
     <h1><%= order.address %></h1>
-    <h1><%= order.orderDate %></h1>
+    <h1><%= order.orderDate.toLocaleDateString() %></h1>
     <h1><%= order.total %></h1>
     <ul>
       <% order.products.forEach(function(product) { %>
-        <%= product %>
+        <h2><%= product %></h2>
+        <h2></h2>
       <% }); %> 
     </ul>
   </body>

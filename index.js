@@ -13,6 +13,7 @@ const methodOverride = require("method-override");
 const cors = require("cors"); // for searching
 const dbConnect = require("./config/db.js");
 const customerRouter = require("./routes/customer.js");
+const shipperRouter = require("./routes/shipper.js");
 const Product = require("./models/product.js");
 const Hub = require("./models/hub.js");
 
@@ -91,6 +92,7 @@ app.use("/checkin", checkinRouter);
 app.use("/profiles", profileRouter);
 app.use("/vendor", vendorRouter);
 app.use("/customer", customerRouter);
+app.use("/shipper", shipperRouter);
 
 // Run on port 3000
 app.listen(3000);
