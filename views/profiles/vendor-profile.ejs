@@ -33,7 +33,7 @@
             <img src="/<%= user.profilePicture %>" alt="profile picture" class="rounded mx-auto d-block row" style="width: 300px;">
             
             <form action="/profiles/change-avatar" method="POST" enctype="multipart/form-data" class="row mt-2 row justify-content-between"> 
-                <input type="file" name="image" class="btn col-8">
+                <input type="file" name="image" class="btn col-8" required>
                 <input type="submit" name="" value="Change" class="btn btn-primary col-auto"> 
             </form>
 

@@ -44,7 +44,6 @@ router.get("/:id", checkAuthenticated, async (req, res) => {
       // Handle the case where the product is not found
       return res.redirect("/");
     }
-
     res.render("vendor/product.ejs", { product: product });
   } catch (e) {
     console.log(e);
