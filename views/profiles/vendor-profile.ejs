@@ -10,7 +10,53 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-    
+    <%- include ('./../customer/nav-customer') %>
+    <div class="container mt-3 mx-5">
+        <nav aria-label=" breadcrumb  ">
+            <ol class="breadcrumb" style="font-size: 1.5em;">
+            <li class="breadcrumb-item pl-3"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col align-self-center text-black">
+                <h1 style="font-size: 6em;">Profile</h1>
+              </div>
+        </div>
+    </div>
+
+    <div class="container-fluid row mt-3 text-center  justify-content-center" >
+        <div class="container col-md-auto mx-4" >
+            <img src="/<%= user.profilePicture %>" alt="profile picture" class="rounded mx-auto d-block row" style="width: 300px;">
+            
+            <form action="/profiles/change-avatar" method="POST" enctype="multipart/form-data" class="row mt-2 row justify-content-between"> 
+                <input type="file" name="image" class="btn col-8">
+                <input type="submit" name="" value="Change" class="btn btn-primary col-auto"> 
+            </form>
+
+            <form action="/checkin/logout?_method=DELETE" method="POST" class="row mt-2 align-self-center"> 
+                <button type="submit" class="btn btn-secondary col-auto ">Log Out</button>
+            </form>
+        </div>
+        
+        <div class="container col-md-7 mx-0 mt-3 text-black text-start" style="height: auto;">
+            <h2 > <Strong class="text-black">Welcome</Strong> <%= user.username %> !!</h2>
+            <h2 > <Strong class="text-black">Your role:</Strong> <%= user.__t %></h2>
+            <h2 > <Strong class="text-black">Your business name:</Strong> <%= user.businessName %></h2>
+            <h2 > <Strong class="text-black">Your business address:</Strong> <%= user.businessAddress %></h2>
+            <p class="text-black"> As a registered customer, your role is to browse and shop effortlessly
+                 on our e-commerce platform. After logging in, you can view products 
+                 from various vendors and refine your search by setting price filters or 
+                 searching by product names. Clicking on a product reveals its details, and 
+                 you can add items to your shopping cart or remove them as needed. When satisfied
+                  with your choices, simply click "Order" to create an active order, which is sent to 
+                  one of our distribution hubs for processing, emptying your cart in the process. 
+                  Your role as a customer is essential in maximizing your shopping experience with us.</p>
+        </div>
+    </div>
     <%- include ('./../partials/footer')%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
