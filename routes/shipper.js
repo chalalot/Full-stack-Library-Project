@@ -16,12 +16,12 @@ router.get("/:id", checkAuthenticated, async (req, res) => {
     const order = await Product.Order.findById(req.params.id).populate(
       "products.product",
     );
-
+    const customer = await User.Customer.findById(order.customer);
     // Prevent users from going back to non active orders
     if (!order || order.status !== "active") {
       return res.redirect("/");
     }
-    res.render("shipper/order.ejs", { order: order });
+    res.render("shipper/order.ejs", { order: order, customer: customer });
   } catch (e) {
     console.log(e);
     res.redirect("/");
