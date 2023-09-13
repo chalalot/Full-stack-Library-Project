@@ -75,7 +75,10 @@ app.get("/", checkAuthenticated, async (req, res) => {
         "orders.order",
       );
       const orders = hubWithOrders.orders
-        .filter((orderObject) => orderObject.order !== null) // Filter out null orders
+        .filter(
+          (orderObject) =>
+            orderObject.order !== null && orderObject.order.status === "active",
+        ) // Filter out null orders and get only active orders
         .map((orderObject) => orderObject.order);
 
       res.render("shipper/index.ejs", { user: req.user, orders: orders });

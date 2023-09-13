@@ -12,12 +12,15 @@
 <h1><%= order.address %></h1>
 <h1><%= order.orderDate.toLocaleDateString() %></h1>
 <h1><%= order.totalCost %></h1>
+    <form action="/shipper/<%= order._id %>" method="post">
+              <input type="submit" name="submit" value="Delivered"> 
+              <input type="submit" name="submit" value="Canceled">
+            </form>
 <ul>
   <% order.products.forEach(function (orderProduct) { %>
       <a href="/shipper/product/<%= orderProduct.product._id %>">link</a>
       <h2>Name: <%= orderProduct.product.name %></h2>
       <h2>Price: <%= orderProduct.product.price %></h2>
-
   <% }); %>
 </ul>
   </body>

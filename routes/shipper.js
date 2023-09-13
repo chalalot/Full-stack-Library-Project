@@ -17,7 +17,8 @@ router.get("/:id", checkAuthenticated, async (req, res) => {
       "products.product",
     );
 
-    if (!order) {
+    // Prevent users from going back to non active orders
+    if (!order || order.status !== "active") {
       return res.redirect("/");
     }
     res.render("shipper/order.ejs", { order: order });
@@ -41,6 +42,22 @@ router.get("/product/:id", checkAuthenticated, async (req, res) => {
   }
 });
 
-router.post("/", (req, res) => {});
+router.post("/:id", checkAuthenticated, async (req, res) => {
+  try {
+    // Convert the submit value
+    const value =
+      req.body.submit.charAt(0).toLowerCase() + req.body.submit.slice(1);
+    await Product.Order.findByIdAndUpdate(
+      req.params.id,
+      { status: value },
+      { new: true },
+    );
+
+    res.redirect("/"); // Refresh main page
+  } catch (e) {
+    console.log(e);
+    res.redirect("/");
+  }
+});
 
 module.exports = router;
