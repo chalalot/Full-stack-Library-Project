@@ -18,7 +18,7 @@
             </form>
 <ul>
   <% order.products.forEach(function (orderProduct) { %>
-      <a href="/shipper/product/<%= orderProduct.product._id %>">link</a>
+      <a href="/shipper/product/<%= orderProduct._id %>">link</a>
       <h2>Name: <%= orderProduct.product.name %></h2>
       <h2>Price: <%= orderProduct.product.price %></h2>
   <% }); %>
