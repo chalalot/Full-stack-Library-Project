@@ -24,12 +24,15 @@
                     <strong>Product Name:</strong> <%= product.name %><br>
                     <strong>Product Price</strong> $<%= product.price %><br>
                 </li>
+                <form action="<%= product._id %>?_method=DELETE" method="POST">
+                  <button type="submit">Remove from cart</button>
+                </form>
             <% }); %>
         </ul>
         <h1><%= total %></h1>
-          <form action="shopping-cart" method="POST">
-      <button type="submit">Buy!</button>
-    </form>
+        <form action="shopping-cart" method="POST">
+          <button type="submit">Buy!</button>
+        </form>
     <% } else { %>
         <p>Your shopping cart is empty.</p>
     <% } %>

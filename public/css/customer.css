@@ -178,3 +178,13 @@
     }
 }
 
+.custom-img-card {
+    width: 150px;
+    height: 300px;
+}
+
+.shopping-icon{ 
+    background-color: #1B2430; 
+    padding: 10px 15px; 
+}
+
