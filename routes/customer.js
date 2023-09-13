@@ -17,7 +17,7 @@ router.get("/search-result", checkAuthenticated, async (req, res) => {
   try {
     const products = await Product.Product.find({
       name: { $regex: new RegExp(req.query.searchQuery, "i") },
-    }); 
+    });
 
     res.render("customer/search-result.ejs", { products: products });
   } catch (err) {
@@ -123,6 +123,19 @@ router.post("/:id", checkAuthenticated, async (req, res) => {
   }
   req.session.order.push(product);
   res.redirect("/"); // Might change this to go to shopping cart
+});
+
+router.delete("/:id", checkAuthenticated, async (req, res) => {
+  try {
+    // Delete from current session
+
+    req.session.order = req.session.order.filter(
+      (product) => product._id !== req.params.id,
+    );
+  } catch (e) {
+    console.log(e);
+  }
+  res.redirect("/customer/shopping-cart");
 });
 
 module.exports = router;
