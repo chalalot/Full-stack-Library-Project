@@ -13,14 +13,17 @@
 </head>
 <body>  
     <%- include ('./../customer/nav-customer') %>
-    <div class="container mt-3 mx-5">
-        <nav aria-label=" breadcrumb  ">
-            <ol class="breadcrumb" style="font-size: 1.5em;">
-            <li class="breadcrumb-item pl-3"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+    <div class="container mt-3 mx-5 my-5">
+        <nav aria-label=" breadcrumb container " class="mt-2">
+            <ol class="breadcrumb mx-5" style="font-size: 1.5em;">
+                <li class="breadcrumb-item pl-3 "><a href="/" class="text-black">Home</a></li>
+                <li class="breadcrumb-item active text-black" aria-current="page">Profile</li>
             </ol>
         </nav>
     </div>
+
+
+
 
     <div class="container text-center">
         <div class="row">
@@ -44,18 +47,33 @@
             </form>
         </div>
         
-        <div class="container col-md-7 mx-0 mt-3 text-black text-start" style="height: auto;">
-            <h2 > <Strong class="text-black">Welcome</Strong> <%= user.username %> !!</h2>
-            <h2 > <Strong class="text-black">Your role:</Strong> <%= user.__t %></h2>
+        <div class="container col-md-7 mx-0 mt-5 text-black text-start" style="height: auto;">
+            <h2 > <Strong class="text-black ">Welcome</Strong> <%= user.username %> !!</h2>
+            <h2 > <Strong class="text-black">Your Role:</Strong> <%= user.__t %></h2>
             <h2 > <Strong class="text-black">Your Address:</Strong> <%= user.address %></h2>
-            <p class="text-black"> As a registered customer, your role is to browse and shop effortlessly
-                 on our e-commerce platform. After logging in, you can view products 
-                 from various vendors and refine your search by setting price filters or 
-                 searching by product names. Clicking on a product reveals its details, and 
-                 you can add items to your shopping cart or remove them as needed. When satisfied
-                  with your choices, simply click "Order" to create an active order, which is sent to 
-                  one of our distribution hubs for processing, emptying your cart in the process. 
-                  Your role as a customer is essential in maximizing your shopping experience with us.</p>
+            <div class="mt-4">
+                <ul>
+                    <li class="text-black">As a registered customer, your role is to browse and shop effortlessly
+                        on our e-commerce platform. 
+                    </li>
+                    <li class="text-black">
+                        After logging in, you can view products from various vendors and refine your search by setting price filters or searching by product names.
+                    </li>
+                    <li class="text-black">
+                        Clicking on a product reveals its details, and 
+                 you can add items to your shopping cart or remove them as needed.
+                    </li>
+                    <li class="text-black">
+                        When satisfied with your choices, simply click "Order" to create an active order, which is sent to 
+                one of our distribution hubs for processing, emptying your cart in the process. 
+                    </li>
+                    <li class="text-black">
+                        Your role as a customer is essential in maximizing your shopping experience with us.
+                    </li>
+                </ul>
+                 
+            </div> 
+                
         </div>
     </div>
 

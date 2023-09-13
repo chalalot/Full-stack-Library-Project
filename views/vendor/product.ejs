@@ -12,37 +12,12 @@
   </head>
   <body>
     <% include ('./vendor-nav.ejs') %>
-    <h1>Seller</h1>
-    <h1>Hi <%= user.username %></h1>
-    <h1><%= user.__t %></h1>
-    <img src="/<%= user.profilePicture %>" alt="profile picture">
+    
+    <h1><%= product.name %></h1>
+    <h1><%= product.price %></h1>
+    <img src="/<%= product.image %>" alt="profile picture" class="rounded mx-auto d-block row" style="width: 300px;">
+    <h1><%= product.description %></h1>
 
-    <form action="/profiles/change-avatar" method="POST" enctype="multipart/form-data"> 
-      <input type="file" name="image">
-      <input type="submit" name="" value="Change">  
-    </form>
-
-    <form action="checkin/logout?_method=DELETE" method="POST"> 
-      <button type="submit">Log Out</button>
-    </form>
-
-    <h1>View My Products</h1>
-    <% if (products && products.length > 0) { %>
-      <ul>
-        <% products.forEach((product) => { %>
-          <li class="col">
-            <img src="/<%= product.image %>" alt="product picture">
-            <h1><%= product.name %></h1>
-            <h1><%= product.price %></h1>
-            <h3><%= product.description %></h3>
-            <a href="/">Go back</a>
-          </li>
-        <% }); %>
-      </ul>
-    <% } else { %>
-      <p>You have no products.</p>
-    <% } %>
-  
     <% include ('./../partials/footer')%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <!-- <img src="/<%= product.image %>" alt="product picture">
