@@ -16,7 +16,7 @@ function checkAuthenticated(req, res, next) {
 router.get("/search-result", checkAuthenticated, async (req, res) => {
   try {
     const products = await Product.Product.find({
-      name: { $regex: new RegExp(req.query.searchQuery, "i") }, // 'i' for case-insensitive search
+      name: req.query.searchQuery,
     });
 
     res.render("customer/search-result.ejs", { products: products });
