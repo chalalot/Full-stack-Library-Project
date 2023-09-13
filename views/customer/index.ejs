@@ -13,7 +13,7 @@
   <body>
     <%- include ('./nav-customer') %>
 
-    <div class="container-sm profile">
+    <div class="container-sm rounded profile ">
       <div class="row"> 
         <div class="col-4">
           <img src="/<%= user.profilePicture %>" alt="profile picture">
@@ -21,35 +21,40 @@
 
         <div class="col-8">
           <h1>Customer</h1>
-          <a href="profiles/customer-profile"><%= user.name %>'s Profile</a>
+          <a href="profiles/customer-profile" class="text-black"><%= user.name %>'s Profile</a>
         </div>
       </div>
     </div>
 
     
-      
-    <form class="container"  action="customer/filter-amount" method="POST">
-      <div>
-        <label class="text-black" for="maximum">Filter maximum:</label> 
-        <input type="text" id="maximum" placeholder="Enter amount..." name="maximum" class="text-black">
-      </div>  
-
-      <div>
-        <label class="text-black" for="minimum">Filter minimum:</label>
-        <input type="text" id="minimum" placeholder="Enter amount..." name="minimum" class="text-black">
-      </div>
-        <button type="submit" class="btn btn-primary">search</button>
-    </form>
+    
+    <div class="container my-3">
+      <form class="rounded p-3" action="customer/filter-amount" method="POST">
+        <div class="mb-3">
+          <label class="form-label text-black" for="maximum">Filter maximum:</label>
+          <input type="text" id="maximum" placeholder="Enter amount..." name="maximum" class="form-control form-control-sm">
+        </div>
+        
+        <div class="mb-3">
+          <label class="text-black form-label" for="minimum">Filter minimum:</label>
+          <input type="text" id="minimum" placeholder="Enter amount..." name="minimum" class="form-control form-control-sm">
+        </div>
+        
+        <button type="submit" class="btn btn-dark mt-3 d-block mx-auto">Search</button>
+      </form>
+    </div>
     
 
 
 
     <div class="container-fluid products-area"> 
-      <ul class="row">
+      <ul class="row mt-4">
         <% products.forEach( (product) =>{ %>
-            <li class="col-lg-2 col-md-3">
-              <img src="/<%= product.image %>" alt="profile picture">
-              <a href="/customer/<%= product._id %>"> <%= product.name %> </a>
+            <li class="col-lg-2 col-md-3 card ">
+              <img src="/<%= product.image %>" alt="profile picture" class="card-img-top rounded card-img-top rounded ">
+              <div class="card-body">
+                  <a href="/customer/<%= product._id %>" class="card-title"> <%= product.name %> </a>
+              </div>
             </li>
         <% }); %>
       </ul>
