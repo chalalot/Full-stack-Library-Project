@@ -71,9 +71,13 @@ app.get("/", checkAuthenticated, async (req, res) => {
       const products = await Product.Product.find();
       res.render("customer/index.ejs", { user: req.user, products: products });
     } else if (req.user.__t === "Shipper") {
-      const hubWithOrders = await Hub.findById(req.user.hub).populate(
-        "orders.order",
-      );
+      const hubWithOrders = await Hub.findById(req.user.hub).populate({
+        path: "orders.order",
+        populate: {
+          path: "customer",
+          model: "Customer",
+        },
+      });
       const orders = hubWithOrders.orders
         .filter(
           (orderObject) =>
@@ -81,7 +85,11 @@ app.get("/", checkAuthenticated, async (req, res) => {
         ) // Filter out null orders and get only active orders
         .map((orderObject) => orderObject.order);
 
-      res.render("shipper/index.ejs", { user: req.user, orders: orders });
+      res.render("shipper/index.ejs", {
+        user: req.user,
+        orders: orders,
+        hub: hubWithOrders,
+      });
     }
   } catch (e) {
     console.log(e);
