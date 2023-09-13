@@ -8,10 +8,11 @@
   </head>
   <body>
 <h1>Order Details</h1>
-<h1><%= customer.username %></h1>
-<h1><%= order.address %></h1>
-<h1><%= order.orderDate.toLocaleDateString() %></h1>
-<h1><%= order.totalCost %></h1>
+<h1>Customer: <%= customer.name %></h1>
+<h1>Address: <%= order.address %></h1>
+<h1>Order date: <%= order.orderDate.toLocaleDateString() %></h1>
+<h1>Total cost: <%= order.totalCost %></h1>
+
     <form action="/shipper/<%= order._id %>" method="post">
               <input type="submit" name="submit" value="Delivered"> 
               <input type="submit" name="submit" value="Canceled">
