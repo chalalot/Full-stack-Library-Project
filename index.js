@@ -74,6 +74,7 @@ app.get("/", checkAuthenticated, async (req, res) => {
       const hubWithOrders = await Hub.findById(req.user.hub).populate(
         "orders.order",
       );
+    
       const orders = hubWithOrders.orders
         .filter(
           (orderObject) =>
