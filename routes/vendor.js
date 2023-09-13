@@ -9,10 +9,11 @@ router.get("/search-result", checkAuthenticated, async (req, res) => {
     const searchQuery = req.query.searchQuery; // Access the searchQuery parameter from the URL
 
     const products = await Product.Product.find({
-      name: searchQuery,
-      vendor: req.user._id,
+      $and: [
+        { name: { $regex: new RegExp(searchQuery, "i") } }, // 'i' for case-insensitive search
+        { vendor: req.user._id },
+      ],
     });
-
     res.render("vendor/search-result.ejs", { products: products });
   } catch (err) {
     console.log(err);

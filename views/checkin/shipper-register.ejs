@@ -43,6 +43,17 @@
             <option value="<%= hub._id %>"><%= hub.name %></option>
           <% }); %>
         </select>
+        
+        <label for="error">
+          <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <ul class="error-list">
+              <% errors.forEach(function(error) { %>
+                <li><%= error.msg %></li>
+              <% }); %>
+            </ul>
+          <% } %>
+        </label>
+
         <button type="submit" class="btn btn-dark mt-5 mx-auto d-block">Register</button>
       </form>
       <a href="login" class="btn btn-none ">Login</a>
