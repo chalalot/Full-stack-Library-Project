@@ -12,55 +12,47 @@
   </head>
   <body>
     <%- include ('./nav-customer') %>
-
-    <div class="container-sm rounded profile ">
-      <div class="row"> 
-        <div class="col-4">
-          <img src="/<%= user.profilePicture %>" alt="profile picture">
-        </div>
-
-        <div class="col-8">
-          <h1>Customer</h1>
-          <a href="profiles/customer-profile" class="text-black"><%= user.name %>'s Profile</a>
-        </div>
-      </div>
-    </div>
-
-    
   
-    
-    <div class="container my-3">
-      <form class="rounded p-2 border shadow custom-filter-container" action="customer/filter-amount" method="POST">
-        <h3 class="mb-2 text-black">Filter by Amount</h3>
-    
-        <div class="mb-2 short-input form-floating">
-          <input type="text" id="maximum" placeholder="Max amount" name="maximum" class="form-control">
-          <label class="form-label text-black" for="maximum">Max Amount:</label>
-        </div>
-    
-        <div class="mb-2 short-input form-floating">
-          <input type="text" id="minimum" placeholder="Min amount" name="minimum" class="form-control">
-          <label class="form-label text-black" for="minimum">Min Amount:</label>
-        </div>
-    
-        <button type="submit" class="btn btn-dark mt-3 mx-auto d-block">Search</button>
-      </form>
-    </div>
-    
-    
-
-    <!-- <div class="container-fluid products-area"> 
-      <ul class="row mt-4">
-        <% products.forEach( (product) =>{ %>
-            <li class="col-lg-2 col-md-3 card ">
-              <img src="/<%= product.image %>" alt="profile picture" class="card-img-top rounded card-img-top rounded ">
-              <div class="card-body">
-                  <a href="/customer/<%= product._id %>" class="card-title"> <%= product.name %> </a>
+  <div class="container">
+    <div class="row">
+<!-- The customer profile section  -->
+        <div class="col-4 mt-4">
+          <div class="container-sm rounded profile mt-5">
+            <div class="row"> 
+              <div class="col-4">
+                <img src="/<%= user.profilePicture %>" alt="profile picture">
               </div>
-            </li>
-        <% }); %>
-      </ul>
-    </div> -->
+      
+              <div class="col-8">
+                <h1>Customer</h1>
+                <a href="profiles/customer-profile" class="text-black"><%= user.name %>'s Profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- THe Filter section  -->
+        <div class="col-8">
+          <div class="container my-3 d-flex flex-row-reverse ">
+            <form class="rounded p-2 border shadow custom-filter-container" action="customer/filter-amount" method="POST">
+              <h3 class="mb-2 text-black">Filter by Amount</h3>
+          
+              <div class="mb-2 short-input form-floating">
+                <input type="text" id="maximum" placeholder="Max amount" name="maximum" class="form-control">
+                <label class="form-label text-black" for="maximum">Max Amount:</label>
+              </div>
+          
+              <div class="mb-2 short-input form-floating">
+                <input type="text" id="minimum" placeholder="Min amount" name="minimum" class="form-control">
+                <label class="form-label text-black" for="minimum">Min Amount:</label>
+              </div>
+          
+              <button type="submit" class="btn btn-dark mt-3 mx-auto d-block">Search</button>
+            </form>
+          </div>
+          
+        </div>
+    </div>
+  </div>
 
 
     <div class="container-fluid mr-4 products-area" style="height: fit-content;" >
