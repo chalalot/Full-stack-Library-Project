@@ -25,7 +25,12 @@
         <div> 
           <label for="password" class="form-label mt-4">Password</label>
           <input type="password" id="password" name="password" class="form-control " required> 
-          <input type="checkbox" onclick="myFunction()">
+          
+          <div class="form-check mt-3">
+            <input type="checkbox" class="form-check-input" id="showPassword" onclick="myFunction()">
+            <label class="form-check-label" for="showPassword"> Show My Password</label>
+          </div>
+          
         </div>
 
         <button type="submit" class="btn btn-dark mt-4 mx-auto d-block">Login</button>
