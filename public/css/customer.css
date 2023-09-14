@@ -188,3 +188,11 @@
     padding: 10px 15px; 
 }
 
+.short-input {
+    width: 100%; /* Adjust the height as needed */
+  }
+
+  .custom-filter-container{
+    width: 300px;
+    height:250px;
+  }

@@ -27,27 +27,29 @@
     </div>
 
     
+  
     
-    <div class="container my-3 form-floating">
-      <form class="rounded p-3" action="customer/filter-amount" method="POST">
-        <div class="mb-3">
-          <label class="form-label text-black" for="maximum">Filter maximum:</label>
-          <input type="text" id="maximum" placeholder="Enter amount..." name="maximum" class="form-control form-control-sm">
+    <div class="container my-3">
+      <form class="rounded p-2 border shadow custom-filter-container" action="customer/filter-amount" method="POST">
+        <h3 class="mb-2 text-black">Filter by Amount</h3>
+    
+        <div class="mb-2 short-input form-floating">
+          <input type="text" id="maximum" placeholder="Max amount" name="maximum" class="form-control">
+          <label class="form-label text-black" for="maximum">Max Amount:</label>
         </div>
-        
-        <div class="mb-3">
-          <label class="text-black form-label" for="minimum">Filter minimum:</label>
-          <input type="text" id="minimum" placeholder="Enter amount..." name="minimum" class="form-control form-control-sm">
+    
+        <div class="mb-2 short-input form-floating">
+          <input type="text" id="minimum" placeholder="Min amount" name="minimum" class="form-control">
+          <label class="form-label text-black" for="minimum">Min Amount:</label>
         </div>
-        
-        <button type="submit" class="btn btn-dark mt-3 d-block mx-auto">Search</button>
+    
+        <button type="submit" class="btn btn-dark mt-3 mx-auto d-block">Search</button>
       </form>
     </div>
     
+    
 
-
-
-    <div class="container-fluid products-area"> 
+    <!-- <div class="container-fluid products-area"> 
       <ul class="row mt-4">
         <% products.forEach( (product) =>{ %>
             <li class="col-lg-2 col-md-3 card ">
@@ -58,7 +60,23 @@
             </li>
         <% }); %>
       </ul>
-    </div>
+    </div> -->
+
+
+    <div class="container-fluid mr-4 products-area" style="height: fit-content;" >
+      <ul class="row mt-4">
+          <% products.forEach( product => {%>
+              <li class="card text-center col-5 mx-3" style="width: 18rem;">
+                  <img src="/<%=product.image %>" class="card-img-top rounded card-img-top rounded custom-img-card ">
+                  <div class="card-body">
+                      <a href="/customer/<%= product._id %>"  class="card-title"> <h5><%= product.name %> </h5></a>
+                      <p class="card-text text-black mt-4"><strong class="text-black"><%= product.price%> $</strong></p>
+                      <a href="/customer/<%= product._id %>" class="btn btn-dark mt-5 mx-auto d-block"> View Product</a>
+                  </div>
+              </li>
+          <% }); %>
+      </ul>
+  </div>
 
     <div class="user-cards" data-product-cards-container></div>
 
