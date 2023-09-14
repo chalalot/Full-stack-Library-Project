@@ -4,22 +4,25 @@
     <title>View My Products</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/styles.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
-    <link href="/css/vendor.css" rel="stylesheet">
+    <link href="/public/css/vendor.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5c0d7c8bb2.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   </head>
   <body>
-    <% include ('./vendor-nav.ejs') %>
-    
-    <h1><%= product.name %></h1>
-    <h1><%= product.price %></h1>
-    <img src="/<%= product.image %>" alt="profile picture" class="rounded mx-auto d-block row" style="width: 300px;">
-    <h1><%= product.description %></h1>
+    <% include ('./../vendor/vendor-nav.ejs') %>
 
+    <div class="container">
+      <h1><%= product.name %></h1>
+      <h1><%= product.price %></h1>
+      <img src="/<%= product.image %>" alt="product picture" class="rounded mx-auto d-block row" style="width: 300px;">
+      <h3><%= product.description %></h3>
+    </div>
+    
     <% include ('./../partials/footer')%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
+    <a href="/" class="btn btn-primary">Go back</a>
 
   </body>
 </html>
