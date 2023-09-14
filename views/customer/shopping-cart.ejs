@@ -14,24 +14,24 @@
     <%- include ('./nav-customer') %>
 
 
-<div class="container">
+<div class="container text-black">
     <% if (products && products.length > 0) { %>
-        <ul class="row">
+        <ul class="row ">
             <!-- Loop through the orders array and generate a list item for each order -->
             <% products.forEach((product) => { %>
-                <li>
+                <li class="mt-4 ">
                     <!-- Display order details -->
-                    <strong>Product Name:</strong> <%= product.name %><br>
-                    <strong>Product Price</strong> $<%= product.price %><br>
+                    <p class="text-black  "><strong class="text-black">Product Name:</strong> <%= product.name %></p>
+                    <p class="text-black"><strong class="text-black">Product Price</strong> $<%= product.price %></p>
                 </li>
                 <form action="<%= product._id %>?_method=DELETE" method="POST">
-                  <button type="submit">Remove from cart</button>
+                  <button type="submit" class="btn btn-danger mt-1 ">Remove from cart</button>
                 </form>
             <% }); %>
         </ul>
-        <h1><%= total %></h1>
+        <h1 class="text-center"> <strong class="text-black text-center">Total Amount:</strong> <%= total %> $</h1>
         <form action="shopping-cart" method="POST">
-          <button type="submit">Buy!</button>
+          <button type="submit" class="btn btn-success mt-3 mx-auto d-block">Buy!</button>
         </form>
     <% } else { %>
         <p>Your shopping cart is empty.</p>
