@@ -19,7 +19,10 @@ router.get("/search-result", checkAuthenticated, async (req, res) => {
       name: { $regex: new RegExp(req.query.searchQuery, "i") },
     });
 
-    res.render("customer/search-result.ejs", { products: products });
+    res.render("customer/search-result.ejs", {
+      products: products,
+      user: req.user,
+    });
   } catch (err) {
     console.log(err);
     res.redirect("/");
@@ -35,7 +38,10 @@ router.post("/filter-amount", checkAuthenticated, async (req, res) => {
         $lt: req.body.maximum,
       },
     });
-    res.render("customer/search-result", { products: products });
+    res.render("customer/search-result", {
+      products: products,
+      user: req.user,
+    });
   } catch (e) {
     console.log(e);
     res.redirect("/");
@@ -56,6 +62,7 @@ router.get("/shopping-cart", checkAuthenticated, async (req, res) => {
     res.render("customer/shopping-cart.ejs", {
       products: req.session.order,
       total: total,
+      user: req.user,
     });
   } catch (e) {
     console.log(e);
@@ -106,7 +113,11 @@ router.get("/:id", checkAuthenticated, async (req, res) => {
       res.redirect("/");
     }
     const vendor = await User.Vendor.findById(product.vendor);
-    res.render("customer/product.ejs", { product: product, vendor: vendor });
+    res.render("customer/product.ejs", {
+      product: product,
+      vendor: vendor,
+      user: req.user,
+    });
   } catch (e) {
     console.log(e);
     res.redirect("/");

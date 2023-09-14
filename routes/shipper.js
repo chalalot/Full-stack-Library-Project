@@ -21,7 +21,11 @@ router.get("/:id", checkAuthenticated, async (req, res) => {
     if (!order || order.status !== "active") {
       return res.redirect("/");
     }
-    res.render("shipper/order.ejs", { order: order, customer: customer });
+    res.render("shipper/order.ejs", {
+      order: order,
+      customer: customer,
+      user: req.user,
+    });
   } catch (e) {
     console.log(e);
     res.redirect("/");
@@ -35,7 +39,11 @@ router.get("/product/:id", checkAuthenticated, async (req, res) => {
       return res.redirect("/");
     }
     const vendor = await User.Vendor.findById(product.vendor);
-    res.render("shipper/product.ejs", { product: product, vendor: vendor });
+    res.render("shipper/product.ejs", {
+      product: product,
+      vendor: vendor,
+      user: req.user,
+    });
   } catch (e) {
     console.log(e);
     res.redirect("/");
