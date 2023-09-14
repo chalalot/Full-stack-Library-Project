@@ -44,6 +44,11 @@
 .row button:hover{
     font-size: larger;
     box-shadow: 2px 2px 3px rgb(0, 0, 0);
+
+}
+
+.bg-custom{
+    background-color: #1B2430;
 }
 /*    profile   */
 .container-sm.profile{
@@ -198,3 +203,4 @@
     width: 250px;
     height: 350px;
 }
+
