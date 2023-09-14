@@ -76,8 +76,12 @@ router.post(
         await customer.save();
         // Redirect to login page
         res.redirect("/checkin/login");
-      } catch {
-        res.redirect("/checkin/customer-register");
+      } catch (e) {
+        if (e.code === 11000 || e.code === 11001) {
+          return res.render("checkin/customer-register", {
+            errors: [{ msg: "Account already exists" }],
+          });
+        }
       }
     } catch {
       res.redirect("/checkin/customer-register");
@@ -112,7 +116,11 @@ router.post(
         // Redirect to login page
         res.redirect("/checkin/login");
       } catch (e) {
-        res.redirect("/checkin/vendor-register");
+        if (e.code === 11000 || e.code === 11001) {
+          return res.render("checkin/vendor-register", {
+            errors: [{ msg: "Account already exists" }],
+          });
+        }
       }
     } catch (e) {
       res.redirect("/checkin/vendor-register");
@@ -148,7 +156,13 @@ router.post(
         // Redirect to login page
         res.redirect("/checkin/login");
       } catch (e) {
-        res.redirect("/checkin/shipper-register");
+        if (e.code === 11000 || e.code === 11001) {
+          const hubs = await Hub.find();
+          return res.render("checkin/shipper-register", {
+            hubs: hubs,
+            errors: [{ msg: "Account already exists" }],
+          });
+        }
       }
     } catch (e) {
       res.redirect("/checkin/shipper-register");

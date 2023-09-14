@@ -1,5 +1,6 @@
 <nav class="container-fluid nav">
-    <div class="container nav">
+    <div class="container nav justify-content-between">
+        <a href="/"><img src="/images/logo-quanhot.png" style="width: 60px;"></a>
         <form action="/customer/search-result" method="GET" class="row-search row align-items-center">
             <div class="input-group">
                 <input type="search" id="query" name="searchQuery" placeholder="Search products..." data-search class="form-control">
@@ -7,6 +8,7 @@
                 <a href="/customer/shopping-cart" class="shopping-icon"> <i class="bi bi-cart-fill"></i></a>
             </div>
         </form>
+        <a href="/profiles/customer-profile"><img src="/<%= user.profilePicture %>" alt="profile picture" style="width: 40px; border-radius: 50%;"></a>
     </div>
 </nav>
 

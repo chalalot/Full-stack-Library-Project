@@ -14,7 +14,10 @@ router.get("/search-result", checkAuthenticated, async (req, res) => {
         { vendor: req.user._id },
       ],
     });
-    res.render("vendor/search-result.ejs", { products: products });
+    res.render("vendor/search-result.ejs", {
+      products: products,
+      user: req.user,
+    });
   } catch (err) {
     console.log(err);
     res.redirect("/");
@@ -32,7 +35,7 @@ function checkAuthenticated(req, res, next) {
 
 router.get("/add-products", checkAuthenticated, (req, res) => {
   // Render the form
-  res.render("vendor/add-products.ejs", { error: "" });
+  res.render("vendor/add-products.ejs", { error: "", user: req.user });
 });
 
 router.get("/:id", checkAuthenticated, async (req, res) => {
@@ -44,8 +47,7 @@ router.get("/:id", checkAuthenticated, async (req, res) => {
       // Handle the case where the product is not found
       return res.redirect("/");
     }
-
-    res.render("vendor/product.ejs", { product: product });
+    res.render("vendor/product.ejs", { product: product, user: req.user });
   } catch (e) {
     console.log(e);
     res.redirect("/");
@@ -74,7 +76,10 @@ router.post(
       // const regex = /name: (.*)/;
       // const match = regex.exec(e.message);
       // const errorMessage = match[1];
-      res.render("vendor/add-products.ejs", { error: e.message });
+      res.render("vendor/add-products.ejs", {
+        error: e.message,
+        user: req.user,
+      });
     }
   },
 );
