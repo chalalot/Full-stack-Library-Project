@@ -4,37 +4,50 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shipper.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   </head>
   <header>
-    <div class="row">
-      <div class="col" id="logo">
-        <img src="" alt="Nhót">
-    </div>
-    <div class="col" id="hub-name">
-      <h1>Distribution Hub: <%= hub.name %> </h1>
-    </div>
-    <div class="col">
-        <a href="profiles/shipper-profile">Profile</a>
-    </div>
-    </div>
+    <nav class="container-fluid nav">
+      <div class="container nav justify-content-between">
+        <div class="col-md-2 text-left">
+          <a class="navbar-brand" href="#">
+            <img src="/images/logo-quanhot.png" alt="" style="max-width: 60px; height: auto;">
+          </a>
+        </div>
+          <div class="col-md-8 text-center d-flex justify-content-center align-items-center">    
+            <a href="" class="nav-link ml-auto">hub</a>
+          </div>
+          <div class="col-md-2 text-right d-flex justify-content-end align-items-center">
+            <a href="/profiles/customer-profile"><img src="/<%= user.profilePicture %>" alt="profile picture" style="width: 40px; border-radius: 50%;"></a>
+          </div>
+          
+      </div>
+  </nav>
   </header>
   <body>
-      <h1>Active Orders</h1>
-      <div id="order-list">
-        <ul>
-          <% orders.forEach(function(order) { %>  
-            <a href="shipper/<%= order._id %>">
-              <h1><%= order.customer.name %></h1>
-              <h1><%= order.address %></h1>
-              <h1><%= order.orderDate.toLocaleDateString() %></h1>
-              <h1><%= order.totalCost %></h1>
-            </a>
-          <% }); %> 
-        </ul>
+    <div class="container bg-light text-center py-4 my-4">
+      <h1 class="display-4 text-primary">Active Orders</h1>
+    </div>
+    
+    <div class="container mt-4 bg-light"> <!-- Add bg-light class here for a light gray background -->
+      <div class="row">
+        <% orders.forEach(function(order) { %>
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4 mt-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title text-success"><%= order.customer.name %></h5>
+                <p class="card-text"><strong>Address:</strong> <%= order.address %></p>
+                <p class="card-text"><strong>Order Date:</strong> <%= order.orderDate.toLocaleDateString() %></p>
+                <p class="card-text"><strong>Total Cost:</strong> $<%= order.totalCost.toFixed(2) %></p>
+                <a href="shipper/<%= order._id %>" class="btn btn-primary btn-sm">View Details</a>
+              </div>
+            </div>
+          </div>
+        <% }); %> 
       </div>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>
 
