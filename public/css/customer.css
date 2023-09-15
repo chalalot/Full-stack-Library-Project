@@ -18,20 +18,15 @@
     align-items: center;
 }
 .row-search{
-    width: 600px;
+    width: 800px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.fa-solid.fa-magnifying-glass{
-    font-size: 1em;
-    color: #1B2430;
-}
-
-.fa-solid.fa-cart-shopping{
-    font-size: 1.5em;
+.custom-nav-cus{
+    background-color: #1B2430;
 }
 
 .row-search a{
@@ -49,6 +44,11 @@
 .row button:hover{
     font-size: larger;
     box-shadow: 2px 2px 3px rgb(0, 0, 0);
+
+}
+
+.bg-custom{
+    background-color: #1B2430;
 }
 /*    profile   */
 .container-sm.profile{
@@ -197,3 +197,10 @@
     height: 170px;
 
   }
+
+
+.custom-img-details{
+    width: 250px;
+    height: 350px;
+}
+
