@@ -13,25 +13,43 @@
 <body>
     <%- include ('./nav-customer') %>
 
-    <div class="container border border-3 rounded  my-5 py-5">
-        <div class="row mt-5 ">
-            <div class="col-2"></div>
-            <div class="col-3  align-item-center"> 
-                <img class="rounded d-flex justify-content-end custom-img-details " src="/<%= product.image %>" alt="product image" >
+    <div class="container border shadow border-3 rounded my-5 py-5">
+        <div class="row mt-5">
+          <div class="col-12 col-md-2"></div>
+          <div class="col-12 col-md-3 align-items-center">
+            <img class="rounded d-flex justify-content-end custom-img-details shadow" src="/<%= product.image %>" alt="product image">
+          </div>
+          <div class="col-12 col-md-7">
+            <div class="row mt-5">
+              <div class="col-12">
+                <h1 class="text-black"><%= product.name %></h1>
+              </div>
             </div>
-            <div class="col-7 ">
-                <div class="row  mt-5"><p class="text-black"><Strong class="text-black">Product Name:</Strong> <%= product.name %> </p></div>
-                <div class="row  mt-3"><p class="text-black"><Strong class="text-black">Product Price:</Strong> <%= product.price %></p></div>
-                <div class="row  mt-3"><p class="text-black"><Strong class="text-black">Product Description:</Strong> <%= product.description %></p></div>
-                <div class="row  mt-3"><p class="text-black"><Strong class="text-black">Vendor:</Strong> <%= vendor.username %></p></div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <p class="text-black"><strong class="text-black">Price:</strong> <%= product.price %></p>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <p class="text-black"><strong class="text-black">Description:</strong> <%= product.description %></p>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <p class="text-black"><strong class="text-black">Vendor:</strong> <%= vendor.businessName %></p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row mt-5">
-        <form action="<%= product.id %>" method="POST" class="col">
-                <button type="submit" class="btn btn-dark mt-3 mx-auto d-block">Add to cart</button>
-            </form>
+          <form action="<%= product.id %>" method="POST" class="col">
+            <button type="submit" class="btn btn-dark mt-3 mx-auto d-block">Add to cart</button>
+          </form>
         </div>
-    </div>
+      </div>
+      
+      
 
     <%- include ('./../partials/footer')%>
 
