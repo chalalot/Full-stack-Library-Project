@@ -192,9 +192,9 @@
     width: 100%; /* Adjust the height as needed */
   }
 
-  .custom-filter-container{
-    width: 500px;
-    height: 170px;
+.custom-filter-container{
+    width: 600px;
+    height: 130px;
 
   }
 
@@ -203,4 +203,6 @@
     width: 250px;
     height: 350px;
 }
+
+
 

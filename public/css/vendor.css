@@ -1,14 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
 :root{
     --lg-font: 'Kaisei Tokumin', serif;
     --sm-font: 'Poppins', sans-serif;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    font-size: 50px;
+    line-height: 64px;
+    color: brown;
+    font-family: var(--lg-font);
+}
+
+h2{
+    font-size: 46px;
+    line-height: 54px;
+    color: brown;
+    font-family: var(--sm-font);
+}
 body{
     font-family: var(--sm-font);
 }
 /* Navigation bar */
+#nav-vendor{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #1B2430;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+}
+
+
 .container-fluid.nav {
     height: 100px;
     padding: 0;
@@ -56,6 +92,23 @@ body{
     box-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
 
+/* header profile */
+#header{
+    display: flexbox;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-top: 22px;
+}
+.profile-image,
+.profile-text {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.profile-image {
+  margin-right: 10px;
+}
 /* title */
 .title h1::before{
     position: absolute;
@@ -74,11 +127,11 @@ body{
     height: auto;
 }
 
-.user-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minimax(150px, 1fr));
-    gap: .25rem;
-    margin-top: 1rem;
+.container-fluid.product-view {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .container-fluid.product-view .row .col-lg-2.col-md-3 {
@@ -98,9 +151,36 @@ body{
 .container-fluid.product-view .row {
     margin: 0;
     padding: 0;
+    padding-top: -10px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: auto;
+}
+
+.custom-link a{
+    font-family: 'DM Serif Display', serif;
+    text-decoration: none;
+    color: rgb(3, 3, 17);
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.card-text {
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 576px) {
+    .product-view {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .product-card {
+      margin-bottom: 20px;
+    }
 }

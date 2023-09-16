@@ -1,11 +1,12 @@
-<nav class="container-fluid vender-nav">
-    <div class="container nav justify-content-between">
-        <a href="/"><img src="/images/logo-quanhot.png" style="width: 60px;"></a>
-        <form action="/vendor/search-result" method="GET" class="row">
-            <div class="input-group">
-                <input type="search" id="query" name="searchQuery" placeholder="Search products..." class="col-10">
-                <button class="col-1"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-        </form>
-    </div>
+
+<nav id="nav-vendor" class="container-fluid vendor-nav">
+  <div class="container d-flex justify-content-between align-items-center">
+    <a href="/"><img src="/images/logo-quanhot.png" style="width: 60px;" alt="Logo"></a>
+    <form action="/vendor/search-result" method="GET" class="row">
+      <div class="input-group">
+        <input type="search" id="query" name="searchQuery" placeholder="Search products..." class="form-control">
+        <button class="btn btn-primary" type="submit" style="width: 40px;"><i class="fas fa-search"></i></button>
+      </div>
+    </form>
+  </div>
 </nav>
