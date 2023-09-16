@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
 :root{
     --lg-font: 'Kaisei Tokumin', serif;
@@ -155,6 +157,18 @@ body{
     align-items: center;
     width: 100%;
     height: auto;
+}
+
+.custom-link a{
+    font-family: 'DM Serif Display', serif;
+    text-decoration: none;
+    color: rgb(3, 3, 17);
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.card-text {
+    font-family: 'Montserrat', sans-serif;
 }
 
 @media (max-width: 576px) {
