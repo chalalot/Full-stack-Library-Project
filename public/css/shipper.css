@@ -1,0 +1,23 @@
+.container-fluid.nav {
+    height: 100px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #1B2430;
+    
+    
+}
+
+span {
+    text-decoration: none;
+    color: #fde5e5;
+    font-family: 'Titan One', cursive;
+}
+
+.order-box {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px; /* Add padding for spacing */
+  }
+
+  

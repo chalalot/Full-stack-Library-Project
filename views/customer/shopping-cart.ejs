@@ -9,20 +9,22 @@
     <script src="https://kit.fontawesome.com/5c0d7c8bb2.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="icon" href="/images/logo-quanhot.png" type="image/png" />
 </head>
 <body>
     <%- include ('./nav-customer') %>
 
 
-<div class="container text-black">
+<div class="container border border-3 my-5 rounded shadow text-black">
     <% if (products && products.length > 0) { %>
         <ul class="row ">
             <!-- Loop through the orders array and generate a list item for each order -->
             <% products.forEach((product) => { %>
-                <li class="mt-4 ">
+                <li class="mt-5 ">
                     <!-- Display order details -->
+                    <p ><strong class="text-info"><h1>Shopping Cart List</h1></strong> </p>
                     <p class="text-black  "><strong class="text-black">Product Name:</strong> <%= product.name %></p>
-                    <p class="text-black"><strong class="text-black">Product Price</strong> $<%= product.price %></p>
+                    <p class="text-black"><strong class="text-black">Product Price:</strong> $<%= product.price %></p>
                 </li>
                 <form action="<%= product._id %>?_method=DELETE" method="POST">
                   <button type="submit" class="btn btn-danger mt-1 ">Remove from cart</button>
@@ -31,7 +33,7 @@
         </ul>
         <h1 class="text-center"> <strong class="text-black text-center">Total Amount:</strong> <%= total %> $</h1>
         <form action="shopping-cart" method="POST">
-          <button type="submit" class="btn btn-success mt-3 mx-auto d-block">Buy!</button>
+          <button type="submit" class="btn btn-success mt-3 mx-auto d-block mb-3">Buy!</button>
         </form>
     <% } else { %>
         <p>Your shopping cart is empty.</p>
