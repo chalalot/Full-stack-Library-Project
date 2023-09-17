@@ -92,6 +92,12 @@ body{
     box-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
 
+/* Adjustments the spacing between body and navigation */
+.body-product,
+.container-search-result {
+    padding-top: 120px;
+}
+
 /* header profile */
 #header{
     display: flexbox;
@@ -109,6 +115,7 @@ body{
 .profile-image {
   margin-right: 10px;
 }
+
 /* title */
 .title h1::before{
     position: absolute;
