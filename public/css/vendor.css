@@ -81,6 +81,12 @@ body{
     box-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
 
+.form-control-search {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
 /* Adjustments the spacing between body and navigation */
 .body-product,
 .container-search-result {
