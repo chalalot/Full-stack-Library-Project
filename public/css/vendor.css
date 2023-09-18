@@ -16,7 +16,6 @@
 h1{
     font-size: 50px;
     line-height: 64px;
-    color: brown;
     font-family: var(--lg-font);
 }
 
@@ -44,7 +43,6 @@ body{
     z-index: 9999;
 }
 
-
 .container-fluid.nav {
     height: 100px;
     padding: 0;
@@ -64,15 +62,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.fa-solid.fa-magnifying-glass{
-    font-size: 1em;
-    color: #1B2430;
-}
-
-.fa-solid.fa-cart-shopping{
-    font-size: 1.5em;
 }
 
 .row-search a{
