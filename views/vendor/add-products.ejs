@@ -10,32 +10,138 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="icon" href="/images/logo-quanhot.png" type="image/png" />
+    <style>
+      .add-product-body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+        padding-top: 50px;
+      }
+  
+      .container-add-product {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+  
+      .add-product-h1 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 30px;
+      }
+  
+      .form-control {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+  
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+  
+      textarea {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+  
+      .btn-primary-add-product {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+  
+      .btn-primary-add-product:hover {
+        background-color: #0056b3;
+      }
+  
+      .back-button {
+        margin-top: 10px;
+      }
+  
+      a {
+        color: #007bff;
+        text-decoration: none;
+        margin-top: 10px;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+      }
+  
+      a:hover {
+        text-decoration: underline;
+      }
+  
+      /* Custom styles for color */
+      .container-add-product {
+        background-color: #f8f9fa;
+      }
+  
+      .add-product-h1 {
+        color: #007bff;
+      }
+  
+      label {
+        color: #343a40;
+      }
+  
+      .form-control {
+        background-color: #ffffff;
+        color: #495057;
+      }
+  
+      textarea {
+        background-color: #ffffff;
+        color: #495057;
+        height: 100px;
+      }
+  
+      .btn-primary-add-product {
+        background-color: #007bff;
+      }
+  
+      a {
+        color: #dc3545;
+      }
+    </style>
   </head>
-  <body>
-    <div class="container form">
-      <h1> Create product </h1>
+  <body class="add-product-body">
+    <div class="container-add-product form">
+      <h1 class="add-product-h1"><strong> Create product </strong></h1>
       <form action="add-products" method="POST" enctype="multipart/form-data">   
-        <div> 
+        <div class="fill-name-product mb-3"> 
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" required> 
+          <input type="text" id="name" name="name" class="form-control" required> 
         </div>
-        <div>
+        <div class="fill-price-product mb-3">
           <label for="price">Price</label>
-          <input type="number" id="price" name="price" required min="0"> 
+          <input type="number" id="price" name="price" class="form-control" required min="0"> 
         </div>
         <div>
-          <label for="description">Description</label>
+          <label for="description-add-product">Description</label>
           <textarea id="description" name="description" required></textarea> 
         </div>
-        <div>
-          <input type="file" name="image" required>
+        <div class="image-add-product mb-3">
+          <input type="file" name="image" class="form-control-file" required>
         </div>
-        <button type="submit">Create</button>
+        <button type="submit" class="btn btn-primary-add-product">Create</button>
         <% if (error && error.length > 0) { %>
-          <%= error %>
+          <p class="text-danger mt-3"><%= error %></p>
         <% } %>
       </form>
-      <a href="/">Go back</a>
+      <a href="/" class="back-button mt-3">Go back</a>
     </div> 
   </body>
 </html>

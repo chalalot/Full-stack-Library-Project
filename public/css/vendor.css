@@ -16,7 +16,6 @@
 h1{
     font-size: 50px;
     line-height: 64px;
-    color: brown;
     font-family: var(--lg-font);
 }
 
@@ -44,7 +43,6 @@ body{
     z-index: 9999;
 }
 
-
 .container-fluid.nav {
     height: 100px;
     padding: 0;
@@ -66,15 +64,6 @@ body{
     justify-content: center;
 }
 
-.fa-solid.fa-magnifying-glass{
-    font-size: 1em;
-    color: #1B2430;
-}
-
-.fa-solid.fa-cart-shopping{
-    font-size: 1.5em;
-}
-
 .row-search a{
     display: flex;
     justify-content: center;
@@ -90,6 +79,18 @@ body{
 .row button:hover{
     font-size: larger;
     box-shadow: 2px 2px 3px rgb(0, 0, 0);
+}
+
+.form-control-search {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Adjustments the spacing between body and navigation */
+.body-product,
+.container-search-result {
+    padding-top: 120px;
 }
 
 /* header profile */
@@ -109,6 +110,7 @@ body{
 .profile-image {
   margin-right: 10px;
 }
+
 /* title */
 .title h1::before{
     position: absolute;
@@ -171,6 +173,106 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
+/* product page */
+/* Custom styles for the container */
+.container-product {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom styles for the headings */
+.product-h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.product-h2 {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.product-h3 {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+/* Custom styles for the product image */
+.product-image {
+max-width: 100%;
+height: auto;
+border-radius: 10px;
+margin-bottom: 20px;
+}
+
+
+/* add-product page */
+.add-product-body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    padding-top: 50px;
+}
+
+.container-add-product {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.btn-primary-add-product {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-primary-add-product:hover {
+    background-color: #0056b3;
+  }
+
+.back-button {
+    margin-top: 10px;
+}
 @media (max-width: 576px) {
     .product-view {
         display: flex;

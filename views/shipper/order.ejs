@@ -9,66 +9,48 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" href="/images/logo-quanhot.png" type="image/png" />
   </head>
-  <header>
-    <nav class="container-fluid nav">
-      <div class="container-fluid nav justify-content-between">
-        <div class="col-2 text-left">
-          <a class="navbar-brand" href="/">
-            <img src="/images/logo-quanhot.png" alt="" style="max-width: 100px; height: auto;">
-          </a>
-        </div>
-        <div class="col-8 text-center d-flex justify-content-center align-items-center">    
-          <a href="/" class="text-white text-decoration-none">
-            <span class="font-weight-bold" style="font-size: 48px;">
-              vx nhe
-            </span>
-          </a>
-        </div>
-        <div class="col-2 text-right d-flex justify-content-end align-items-center">
-          <a href="/profiles/customer-profile" class="text-white text-decoration-none"><img src="/<%= user.profilePicture %>" alt="profile picture" style="width: 40px; border-radius: 20px;"></a>
-        </div>
-      </div>
-  </nav>
-
-    <div class="container mt-3 mx-5 my-5">
-      <nav aria-label=" breadcrumb container " class="mt-2">
-          <ol class="breadcrumb mx-5" style="font-size: 1.5em;">
-              <li class="breadcrumb-item pl-3 "><a href="/" class="text-black">Home</a></li>
-              <li class="breadcrumb-item active text-black" aria-current="page">Order details</li>
-          </ol>
-      </nav>
-    </div>
-  </header>
-
+  <%- include ('./../partials/nav-shipper')%>
   <body>
     <div class="container-fluid">
-      <div class="row justify-content-center align-items-center vh-100">
+      <div class="row justify-content-center vh-100">
         <div class="col-md-8 order-box">
-          <h1 class="mt-4">Order Details</h1>
-          <h2>Customer: <%= customer.name %></h2>
-          <p>Address: <%= order.address %></p>
-          <p>Order date: <%= order.orderDate.toLocaleDateString() %></p>
-          <p>Total cost: <%= order.totalCost %></p>
-  
-          <form action="/shipper/<%= order._id %>" method="post">
-            <div class="btn-group mt-3" role="group" aria-label="Order Actions">
-              <button type="submit" name="submit" value="Delivered" class="btn btn-success">Delivered</button>
-              <button type="submit" name="submit" value="Canceled" class="btn btn-danger">Canceled</button>
+          <div class="container bg-light text-center py-4 my-4 shadow">
+            <h1 class="display-4 text-primary">Orders' detail</h1>
+          </div>
+          <div class="row">
+            <div class="col-6 bg-light text-center py-4 shadow">
+              <h2>Customer: <%= customer.name %></h2>
+              <p>Address: <%= order.address %></p>
+              <p>Order date: <%= order.orderDate.toLocaleDateString() %></p>
+              
+      
+              <form action="/shipper/<%= order._id %>" method="post">
+                <div class="btn-group mt-3" role="group" aria-label="Order Actions">
+                  <button type="submit" name="submit" value="Delivered" class="btn btn-success">Delivered</button>
+                  <button type="submit" name="submit" value="Canceled" class="btn btn-danger">Canceled</button>
+                </div>
+              </form>
             </div>
-          </form>
-  
-          <ul class="list-group mt-4">
-            <% order.products.forEach(function (orderProduct) { %>
-              <li class="list-group-item">
-                <a href="/shipper/product/<%= orderProduct.product._id %>">link</a>
-                <h4><%= orderProduct.product.name %></h4>
-                <p><%= orderProduct.product.price %></p>
-              </li>
-            <% }); %>
-          </ul>
+    
+            <ul class="col-6 list-group" id="fixed-height">
+              <% order.products.forEach(function (orderProduct) { %>
+                <li class="list-group-item d-flex row">
+                  <h3 class="col-6"><strong>Product's Name: </strong></h3>
+                  <div class="col-6">
+                    <a href="/shipper/product/<%= orderProduct.product._id %>">
+                      <h4><%= orderProduct.product.name %></h4>
+                    </a>                  
+                    <p><strong>Price: </strong>$<%= orderProduct.product.price %></p>
+                  </div>
+                </li>
+              <% }); %>
+              <p class="align-self-end"><strong>Total cost: </strong> $<%= order.totalCost %></p>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
+    <%- include ('./../partials/footer')%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html> 
