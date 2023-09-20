@@ -14,6 +14,7 @@ const userSchema = new Schema({
   },
   profilePicture: {
     type: String,
+    default:"images/default-ava.png",
   },
 });
 
