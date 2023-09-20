@@ -19,3 +19,29 @@ span {
     margin: 0 auto;
     padding: 20px; /* Add padding for spacing */
   }
+
+#card-container {
+    height: 100%;
+}
+#btn-container {
+    position: relative;
+    height: 50px;
+}
+#btn {
+    min-width: 120px;
+    position: absolute;
+    bottom: 0;
+}
+#fixed-height {
+    height: 50vh; /* Adjust the height as needed */
+    overflow-y: auto; /* Add vertical scrollbar */
+    border: 1px solid #ccc; /* Add border for styling */
+    padding: 10px; /* Add padding for content */
+}
+footer{
+    padding: 30px;
+    padding-bottom: 40px;
+    height: auto;
+    background-color: #1B2430;
+    color: white;
+}
