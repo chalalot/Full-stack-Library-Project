@@ -26,7 +26,17 @@
 
   <%- include ('./../vendor/vendor-nav.ejs') %>
 
-  <body class="body-product">
+  <body class="body-product" style="margin-top: 60px;">
+
+    <div class="container  mx-5" >
+      <nav aria-label=" breadcrumb  ">
+          <ol class="breadcrumb" style="font-size: 1.5em;">
+          <li class="breadcrumb-item pl-3"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%=product.name%></li>
+          </ol>
+      </nav>
+    </div>
+
     <div class="container-product mt-4">
       <h1 class="product-h1 mb-3"><%= product.name %></h1>
       <h2 class="product-h2 mb-4">Our Price: <%= product.price %> $</h2>
