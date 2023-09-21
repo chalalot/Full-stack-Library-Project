@@ -15,15 +15,12 @@
     <%- include ('./nav-customer') %>
   
   <div class="container">
+    <!-- THe Filter section  -->
     <div class="row">
-<!-- The customer profile section REMOVED -->
-        <div class="col-4 mt-3">
-        </div>
-<!-- THe Filter section  -->
+          <div class="col">
+            <div class="container my-3 d-flex flex-row">
 
-          <div class="col-8">
-            <div class="container my-3 d-flex flex-row-reverse">
-              <form class="rounded p-2 border shadow custom-filter-container" action="customer/filter-amount" method="POST">
+              <form class="rounded p-2 border shadow custom-filter-container" action="customer/filter-amount" method="POST" style="height: auto;">
                 <h3 class="mb-2 text-black text-center">Filter by Amount</h3>
             
                 <div class="row">
@@ -39,13 +36,12 @@
 
                   <div class="col-md-2 "><button type="submit" class="btn btn-dark mt-2  d-block">Search</button></div>
                 </div>
-            
-                
               </form>
             </div>
+
           </div>
  
-        </div>
+        
     </div>
   </div>
 

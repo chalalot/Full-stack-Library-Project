@@ -12,6 +12,8 @@
     background-color: #1B2430;
 }
 
+
+
 .container.nav{
     display: flex;
     justify-content: center;
@@ -164,11 +166,14 @@
 
 @media (max-width: 768px) {
     /* Styles for screens up to 768px wide (e.g., tablets) */
-    
+    .navbar-form.row-search {
+        width: auto;
+    }
 }
 
 @media (max-width: 576px) {
     /* Styles for screens up to 576px wide (e.g., tablets) */
+    
     .container-sm.profile{
         width: 100%;
         margin: auto;
