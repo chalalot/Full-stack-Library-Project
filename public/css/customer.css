@@ -16,9 +16,9 @@
     width: 60px;
 }
 
-.navbar-nav {
-    display: flex; 
-    flex-direction: row; 
+.navbar-nav.customer{
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 
