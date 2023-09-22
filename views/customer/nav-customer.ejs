@@ -1,10 +1,7 @@
-
-
-
  <nav class="navbar navbar-expand-lg navbar-dark bg-custom ">
     <div class="container ">
       <a class="navbar-brand" href="/">
-        <img src="/images/logo-quanhot.png" style="width: 60px;" alt="Logo">
+        <img src="/images/logo-quanhot.png" alt="Logo" id="logo">
       </a>
   
   
@@ -14,7 +11,7 @@
       </button>
   
       <div class="collapse navbar-collapse" id="navbarNav">
-        <form action="/customer/search-result" method="GET" class="navbar-form row-search" style="min-width: 150px;">
+        <form action="/customer/search-result" method="GET" class="navbar-form row-search">
           <div class="input-group">
             <input type="search" id="query" name="searchQuery" placeholder="Search products..." data-search
               class="form-control">
@@ -24,17 +21,17 @@
           </div>
         </form>
   
-        <ul class="navbar-nav" style="display: flex; flex-direction: row; justify-content: space-between;">
+        <ul class="navbar-nav">
 
-          <li class="nav-item" style="width:fit-content;display: flex;justify-content: center;align-items: center;">
+          <li class="nav-item" >
             <a href="/customer/shopping-cart" class="nav-link mx-3 ">
               <i class="bi bi-cart-fill text-white"></i>
             </a>
           </li>
 
-          <li class="nav-item" style="width:fit-content;">
+          <li class="nav-item" >
             <a href="/profiles/profile" class="nav-link mx-3 my-3">
-              <img src="/<%= user.profilePicture %>" alt="Profile Picture" style="width: 40px; border-radius: 50%;">
+              <img src="/<%= user.profilePicture %>" alt="Profile Picture" id="user-profile">
             </a>
           </li>
 
