@@ -12,13 +12,13 @@
   <%- include ('./../partials/nav-shipper')%>
   <body>
     <div class="container-fluid">
-      <div class="row justify-content-center vh-100">
+      <div class="row justify-content-center vh-110">
         <div class="col-md-8 order-box">
           <div class="container bg-light text-center py-4 my-4 shadow">
             <h1 class="display-4 text-primary">Orders' detail</h1>
           </div>
           <div class="row">
-            <div class="col-6 bg-light text-center py-4 shadow">
+            <div class="col-lg-6 col-md-12 bg-light text-center py-4 shadow">
               <h2>Customer: <%= customer.name %></h2>
               <p>Address: <%= order.address %></p>
               <p>Order date: <%= order.orderDate.toLocaleDateString() %></p>
@@ -32,9 +32,9 @@
               </form>
             </div>
     
-            <ul class="col-6 list-group" id="fixed-height">
+            <ul class="col-lg-6 col-md-12 list-group" id="fixed-height">
               <% order.products.forEach(function (orderProduct) { %>
-                <li class="list-group-item d-flex row">
+                <li class="list-group-item d-flex row p-5">
                   <h3 class="col-6"><strong>Product's Name: </strong></h3>
                   <div class="col-6">
                     <a href="/shipper/product/<%= orderProduct.product._id %>">
