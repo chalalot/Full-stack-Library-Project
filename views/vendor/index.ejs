@@ -20,9 +20,9 @@
     <div class="container">
       <div class="py-3">
         <img src="/<%= user.profilePicture %>" alt="profile picture" class="img-fluid rounded-circle profile-image" >
-        <h1 class="text-capitalize profile-text">Hi <%= user.__t %>, <a href="profiles/profile"><%= user.username %></a></h1>
+        <h1 class="text-capitalize profile-text">Hi <%= user.__t %>, <a href="./views/profiles/vendor-profile.ejs"><%= user.username %></a></h1>
         <div class="mt-4 text-center">
-          <a href="/vendor/add-products" class="btn btn-success">Add products</a>
+          <a href="/vendor/add-products" class="btn btn-success">Add Products</a>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
             </div>
           <% } %>
         <% } else { %>
-          <p>There are no products...</p>
+          <p>There are no products ...</p>
         <% } %>
       </div>
     </div>
