@@ -1,8 +1,8 @@
 repo link: https://github.com/chalalot/Web_Project.git
 video link:
 
-customer username: customer123
-customer password: Customer123@
+customer username: customer1234
+customer password: Customer1234@
 
 vendor username: vendor123
 vendor password: Vendor123@
