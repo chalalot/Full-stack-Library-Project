@@ -45,19 +45,26 @@
   </div>
 
 
-    <div class="container-fluid mr-4 products-area" >
-      <ul class="row mt-4">
-          <% products.forEach( product => {%>
-              <li class="card text-center col-5 mx-3 mb-4" id="card-product">
-                  <img src="/<%=product.image %>" class="card-img-top rounded card-img-top rounded custom-img-card ">
-                  <div class="card-body">
-                      <a href="/customer/<%= product._id %>"  class="card-title"> <h5><%= product.name %> </h5></a>
-                      <p class="card-text text-black mt-4"><strong class="text-black"><%= product.price%> $</strong></p>
-                      <a href="/customer/<%= product._id %>" class="btn btn-dark mt-5 mx-auto d-block"> View Product</a>
-                  </div>
-              </li>
-          <% }); %>
-      </ul>
+    <div class="container-fluid mr-4 products-area">
+      <% if( products && products.length>0) {%>
+        <ul class="row mt-4">
+            <% products.forEach( product => {%>
+                <li class="card text-center col-5 mx-3 mb-4" id="card-product">
+                    <img src="/<%=product.image %>" class="card-img-top rounded card-img-top rounded custom-img-card ">
+                    <div class="card-body">
+                        <a href="/customer/<%= product._id %>"  class="card-title"> <h5><%= product.name %> </h5></a>
+                        <p class="card-text text-black mt-4"><strong class="text-black"><%= product.price%> $</strong></p>
+                        <a href="/customer/<%= product._id %>" class="btn btn-dark mt-5 mx-auto d-block"> View Product</a>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+      <%} else {%>
+        <div id="mainArea">
+            <h1>There is no product</h1>
+        </div>
+      <%}%>
+
     </div>
 
     <div class="user-cards" data-product-cards-container></div>
