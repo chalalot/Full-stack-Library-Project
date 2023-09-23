@@ -76,6 +76,20 @@
 .bg-custom{
     background-color: #1B2430;
 }
+
+
+.empty-cart {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-cart p {
+    font-size: 2em;
+    color:#1B2430;
+}
+
 /*    profile   */
 .container-sm.profile{
     margin: 10px;
@@ -207,6 +221,10 @@
     }
     #product-area {
         grid-template-columns: 1fr;
+    }
+    .empty-cart p {
+        font-size: 1em;
+        color:#1B2430;
     }
     
 }

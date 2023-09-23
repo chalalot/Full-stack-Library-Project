@@ -17,7 +17,7 @@ router.get("/:id", checkAuthenticated, async (req, res) => {
       "products.product",
     );
     const customer = await User.Customer.findById(order.customer);
-    // Prevent users from going back to non active orders
+    // Prevent users from going back to non active orders    
     if (!order || order.status !== "active") {
       return res.redirect("/");
     }

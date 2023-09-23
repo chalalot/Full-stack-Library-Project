@@ -1,0 +1,107 @@
+
+.add-product-body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    padding-top:130px;
+  }
+
+  .container-add-product {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .add-product-h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 30px;
+  }
+
+  .form-control {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .btn.btn-primary-add-product.create {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .btn.btn-primary-add-product.create:hover {
+    background-color: #0056b3;
+  }
+
+  .back-button {
+    margin-top: 10px;
+  }
+
+  a {
+    color: #007bff;
+    text-decoration: none;
+    width: fit-content;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Custom styles for color */
+  .container-add-product {
+    background-color: #f8f9fa;
+  }
+
+  .add-product-h1 {
+    color: #007bff;
+  }
+
+  label {
+    color: #343a40;
+  }
+
+  .form-control {
+    background-color: #ffffff;
+    color: #495057;
+  }
+
+  textarea {
+    background-color: #ffffff;
+    color: #495057;
+    height: 100px;
+  }
+
+  .btn.btn-primary-add-product.create {
+    background-color: #007bff;
+  }
+
+  a {
+    color: #dc3545;
+  }
+
+  .btn-go-back {
+    color: black;
+    text-decoration: none;
+  }

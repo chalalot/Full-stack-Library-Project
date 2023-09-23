@@ -10,18 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="icon" href="/images/logo-quanhot.png" type="image/png" />
-    <style>
-      /* Custom styles for the "Go back" button */
-      .btn-primary-product {
-        background-color: #ff6b6b;
-        border-color: #ff6b6b;
-      }
-
-      .btn-primary-product:hover {
-        background-color: #ff4f4f;
-        border-color: #ff4f4f;
-      }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   </head>
 
   <%- include ('./../vendor/vendor-nav.ejs') %>
@@ -37,19 +26,42 @@
       </nav>
     </div>
 
-    <div class="container-product mt-4">
-      <h1 class="product-h1 mb-3"><%= product.name %></h1>
-      <h2 class="product-h2 mb-4">Our Price: <%= product.price %> $</h2>
-      <img src="/<%= product.image %>" alt="product picture" class="product-image mb-4 img-fluid">
-      <h3 class="product-h3 mb-4">Description:</h3>
-      <span class="mb-4 justify-content-center"><%= product.description %></span>
+
+    <div class="container border shadow border-3 rounded my-5 py-5">
+      <div id="product-area">
+        
+        <div class="align-items-center" style="width: auto;">
+          <img class="rounded d-flex justify-content-end custom-img-details shadow" src="/<%= product.image %>" alt="product image" id="img-product">
+        </div>
+
+        <div class="description-box">
+          <div class="row mt-5">
+            <div class="col-12">
+              <h1 class="text-black"><%= product.name %></h1>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12">
+              <h2 class="text-black"><strong class="text-black">Price:</strong> <%= product.price %></h2>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12">
+              <h4 class="text-black"><strong class="text-black">Description:</strong> <%= product.description %></h4>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
     </div>
     
-    <% include ('./../partials/footer')%>
+    
+    <%- include ('./../partials/footer')%>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     
-    <a href="/" class="btn btn-primary-product">Go back</a>
 
   </body>
 </html>
