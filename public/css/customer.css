@@ -267,6 +267,19 @@
 .hide {
     display: none;
 }
+.container.addProduct {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+#added-product {
+    width: fit-content;
+}
+
+.remove-btn {
+    width: fit-content;
+}
 
 @media (max-width: 768px) {
     /* Styles for screens up to 768px wide (e.g., tablets) */
@@ -279,6 +292,9 @@
     .empty-cart p {
         font-size: 1em;
         color:#1B2430;
+    }
+    .container.addProduct {
+        flex-direction: column;
     }
     
 }
