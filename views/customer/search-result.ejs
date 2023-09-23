@@ -19,20 +19,27 @@
               <li class="breadcrumb-item active text-black" aria-current="page">Result</li>
             </ol>
         </nav>
-          
+        
+        
         <div class="container-fluid mr-4"  id="products-result">
-            <ul class="row mt-4">
-                <% products.forEach( product => {%>
-                    <li class="card text-center col-5 mx-3" id="cards-result">
-                        <img src="/<%=product.image %>" class="card-img-top rounded card-img-top rounded custom-img-card ">
-                        <div class="card-body">
-                            <a href="/customer/<%= product._id %>"  class="card-title"> <h5><%= product.name %> </h5></a>
-                            <p class="card-text text-black mt-4"><strong class="text-black"><%= product.price%> $</strong></p>
-                            <a href="/customer/<%= product._id %>" class="btn btn-dark mt-5 mx-auto d-block"> View Product</a>
-                        </div>
-                    </li>
-                <% }); %>
-            </ul>
+            <%if (products && products.length > 0) {%>
+                <ul class="row mt-4">
+                    <% products.forEach( product => {%>
+                        <li class="card text-center col-5 mx-3" id="cards-result">
+                            <img src="/<%=product.image %>" class="card-img-top rounded card-img-top rounded custom-img-card ">
+                            <div class="card-body">
+                                <a href="/customer/<%= product._id %>"  class="card-title"> <h5><%= product.name %> </h5></a>
+                                <p class="card-text text-black mt-4"><strong class="text-black"><%= product.price%> $</strong></p>
+                                <a href="/customer/<%= product._id %>" class="btn btn-dark mt-5 mx-auto d-block"> View Product</a>
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+            <%} else {%>
+                <div class="contianer notFound">
+                    <p>Not Found</p>
+                </div>
+            <%}%>
         </div>
 
 
