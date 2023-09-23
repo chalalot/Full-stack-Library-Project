@@ -13,6 +13,13 @@
 </head>
 <body>
     <%- include ('./nav-customer') %>
+    <nav aria-label=" breadcrumb  " class="row d-flex justify-content-between m-3">
+      <ol class="breadcrumb" style="font-size: 1.5em;">
+        <li class="breadcrumb-item pl-3"><a href="/" class="text-black">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= product.name %></li>
+      </ol>
+      
+    </nav>
 
     <div class="container border shadow border-3 rounded my-5 py-5">
         <div id="product-area">

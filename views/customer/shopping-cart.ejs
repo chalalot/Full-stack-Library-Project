@@ -14,7 +14,13 @@
 <body>
     <%- include ('./nav-customer') %>
 
-
+    <nav aria-label=" breadcrumb  " class="row d-flex justify-content-between m-3">
+        <ol class="breadcrumb" style="font-size: 1.5em;">
+          <li class="breadcrumb-item pl-3"><a href="/" class="text-black">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+        </ol>
+        
+      </nav>
 <div class="container border border-3 my-5 rounded shadow text-black">
     <% if (products && products.length > 0) { %>
         <ul class="row ">
@@ -33,7 +39,7 @@
         </ul>
         <h1 class="text-center"> <strong class="text-black text-center">Total Amount:</strong> <%= total %> $</h1>
         <form action="shopping-cart" method="POST">
-          <button type="submit" class="btn btn-success mt-3 mx-auto d-block mb-3">Buy!</button>
+          <button type="submit" class="btn btn-success mt-3 mx-auto d-block mb-3">Buy</button>
         </form>
     <% } else { %>
         <div class="empty-cart">

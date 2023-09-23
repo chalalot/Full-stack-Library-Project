@@ -33,6 +33,10 @@ ul {
     list-style: none;
     text-decoration: none;
 }
+
+.img-fluid.rounded-circle.profile-image {
+    max-width: 50px;
+}
 /* Navigation bar */
 #nav-vendor{
     position: fixed;
@@ -209,6 +213,8 @@ ul {
     font-family: 'Montserrat', sans-serif;
 }
 
+
+
 /* product page */
 #product-area {
     display: grid;
@@ -357,6 +363,13 @@ textarea {
         justify-content: center;
         align-items: center;
         height: 100vh;
+    }
+    .description-box {
+        padding-left: auto;
+        padding-right: auto;
+    }
+    #img-product {
+        width: 300px;
     }
 
     .product-card {
