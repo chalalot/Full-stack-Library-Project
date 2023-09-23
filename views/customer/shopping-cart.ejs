@@ -27,14 +27,16 @@
             <p class=" mt-5 text-black" ><strong class="text-info "><h1 class="text-center">Shopping Cart List</h1></strong> </p>
             <!-- Loop through the orders array and generate a list item for each order -->
             <% products.forEach((product) => { %>
-                <li class="mt-5 ">
-                    <!-- Display order details -->
-                    <p class="text-black  "><strong class="text-black">Product Name:</strong> <%= product.name %></p>
-                    <p class="text-black"><strong class="text-black">Product Price:</strong> $<%= product.price %></p>
-                </li>
-                <form action="<%= product._id %>?_method=DELETE" method="POST">
-                  <button type="submit" class="btn btn-danger mt-1 ">Remove from cart</button>
-                </form>
+                <div class="container addProduct">
+                    <li class="mt-5 " id="added-product">
+                        <!-- Display order details -->
+                        <p class="text-black  "><strong class="text-black">Product Name:</strong> <%= product.name %></p>
+                        <p class="text-black"><strong class="text-black">Product Price:</strong> $<%= product.price %></p>
+                    </li>
+                    <form action="<%= product._id %>?_method=DELETE" method="POST" class="remove-btn">
+                    <button type="submit" class="btn btn-danger mt-1 ">Remove from cart</button>
+                    </form>
+                </div>
             <% }); %>
         </ul>
         <h1 class="text-center"> <strong class="text-black text-center">Total Amount:</strong> <%= total %> $</h1>
