@@ -140,6 +140,20 @@
 }
 
 /*    display product    */
+.contianer.notFound {
+    height: 400px;
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contianer.notFound p{
+    font-size: 3em;
+    color: black;
+}
+
 #card-product {
     width: 18rem;
 }
