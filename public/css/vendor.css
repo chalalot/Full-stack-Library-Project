@@ -178,6 +178,9 @@ ul {
 }
 
 #img-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: auto;
 }
 
@@ -244,9 +247,10 @@ ul {
 }
 
 #img-product {
-    height: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    
+    width: 350px;
+    margin: auto;
+    
 }
 
 .description-box {

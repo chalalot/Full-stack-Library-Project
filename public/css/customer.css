@@ -196,6 +196,12 @@
 }
 
 /*         product detail            */
+#img-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
 
 #product-area {
     display: grid;
