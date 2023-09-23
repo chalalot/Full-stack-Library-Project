@@ -104,5 +104,20 @@ app.use("/vendor", vendorRouter);
 app.use("/customer", customerRouter);
 app.use("/shipper", shipperRouter);
 
-// Run on port 3000
+
+//create hubs
+// let hubs = [
+//   {
+//     name:'Viettel Post',
+//     address: 'Ninh Hiep',
+//   },
+//   {
+//     name: 'J&T Express',
+//     address:'Cau Giay',
+//   },
+// ];
+
+// Hub.insertMany(hubs).then( () => console.log("save success")).catch(err => console.log(err))
+
+//Run on port 3000
 app.listen(3000);

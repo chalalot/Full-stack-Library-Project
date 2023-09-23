@@ -17,11 +17,11 @@ router.post("/change-avatar", upload.single("image"), async (req, res) => {
     );
 
     if (user.__t === "Vendor") {
-      res.redirect("/profiles/vendor-profile");
+      res.redirect("/profiles/profile");
     } else if (user.__t === "Shipper") {
-      res.redirect("/profiles/shipper-profile");
+      res.redirect("/profiles/profile");
     } else if (user.__t === "Customer") {
-      res.redirect("/profiles/customer-profile");
+      res.redirect("/profiles/profile");
     } else {
       res.redirect("/");
     }

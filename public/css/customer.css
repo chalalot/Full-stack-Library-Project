@@ -91,6 +91,19 @@
     color:#1B2430;
 }
 
+#mainArea {
+    height: 400px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.4 solid black;
+}
+
+#mainArea h1 {
+    color: black;
+}   
+
 /*    profile   */
 .container-sm.profile{
     margin: 10px;
