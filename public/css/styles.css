@@ -43,3 +43,23 @@ a.btn-none {
     padding: 20px;
     height: auto;
 }
+
+.breadcrumb.size{
+    font-size: 1.5em;
+}
+
+#profile-deading {
+    font-size: 6em;
+}
+
+#profile-img {
+    width: 300px;
+}
+
+#profile-descript {
+    height: auto;
+}
+ 
+#vendor-profile {
+    margin-top: 100px;
+}

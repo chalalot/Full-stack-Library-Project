@@ -34,13 +34,13 @@
         <h1 class="position-relative d-inline-block"><strong>~  View My Products  ~</strong></h1>
       </div>
 
-      <div class="container-fluid mr-4 product-view d-flex flex-wrap justify-content-center align-items-center" style="height: fit-content;">
+      <div class="container-fluid mr-4 product-view d-flex flex-wrap justify-content-center align-items-center" id="products-container">
         <% if (products && products.length > 0) { %>
           <% for (let i = 0; i < products.length; i += 3) { %>
             <div class="row mt-4">
               <% for (let j = i; j < i + 3 && j < products.length; j++) { %>
                 <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-                  <div class="card text-center mb-4 d-flex flex-column align-items-center" style="width: 18rem;">
+                  <div class="card text-center mb-4 d-flex flex-column align-items-center" id="cards-product" >
                     <img src="/<%= products[j].image %>" alt="product image" class="w-100">
                     <div class="card-body text-capitalize my-1">
                       <span class="custom-link"><a href="/vendor/<%= products[j]._id %>"><%= products[j].name %>:</a></span>

@@ -126,6 +126,26 @@
 }
 
 /*    display product    */
+#card-product {
+    width: 18rem;
+}
+
+#filter {
+    height: auto;
+}
+
+#filter-label {
+    margin-left: 10px;
+}
+
+#products-result {
+    height: fit-content;
+}
+
+#cards-result {
+    width: 18rem;
+}
+
 .products-area{
     height: auto;
 }

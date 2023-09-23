@@ -15,12 +15,12 @@
 
   <%- include ('./../vendor/vendor-nav.ejs') %>
 
-  <body class="body-product" style="margin-top: 60px;">
+  <body class="body-product" >
 
     <div class="container  mx-5" >
       <nav aria-label=" breadcrumb  ">
-          <ol class="breadcrumb" style="font-size: 1.5em;">
-          <li class="breadcrumb-item pl-3"><a href="/">Home</a></li>
+          <ol class="breadcrumb size">
+          <li class="breadcrumb-item pl-3" ><a href="/" class="text-black">Home</a></li>
           <li class="breadcrumb-item active" aria-current="page"><%=product.name%></li>
           </ol>
       </nav>
@@ -30,7 +30,7 @@
     <div class="container border shadow border-3 rounded my-5 py-5">
       <div id="product-area">
         
-        <div class="align-items-center" style="width: auto;">
+        <div class="align-items-center" id="img-box" >
           <img class="rounded d-flex justify-content-end custom-img-details shadow" src="/<%= product.image %>" alt="product image" id="img-product">
         </div>
 

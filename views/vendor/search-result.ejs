@@ -15,12 +15,21 @@
     <body>
         <%- include ('./vendor-nav') %>
         
+        <div class="container  mx-5" id="breadcrumb-box">
+            <nav aria-label=" breadcrumb  ">
+                <ol class="breadcrumb size">
+                <li class="breadcrumb-item pl-3"><a href="/" class="text-black">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Result</li>
+                </ol>
+            </nav>
+        </div>
+        
         <div class="container-search-result">
             <%if(products && products.length > 0) {%>
                 <ul class="row">
                     <% products.forEach( product => {%>
                         <li class="col-lg-4 col-md-6 d-flex justify-content-center ">
-                            <div class="card text-center mb-4 d-flex flex-column align-items-center" style="width: 18rem;">
+                            <div class="card text-center mb-4 d-flex flex-column align-items-center" id="cards-product" >
                                 <img src="/<%= product.image %>" alt="product image" class="w-100">
                                 <div class="card-body text-capitalize my-1">
                                     <span class="custom-link"><a href="/vendor/<%= product._id %>"><%= product.name %></a></span>

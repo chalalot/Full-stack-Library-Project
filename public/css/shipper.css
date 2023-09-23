@@ -38,6 +38,25 @@ span {
     border: 1px solid #ccc; /* Add border for styling */
     padding: 10px; /* Add padding for content */
 }
+
+#img-product {
+    height: 50vh;
+}
+
+#profile-img-icon {
+    width: 40px; 
+    border-radius: 20px;
+}
+
+#nav-title {
+    font-size: 4vw;
+}
+
+#logo-img {
+    max-width: 10vh; 
+    height: auto;
+}
+
 footer{
     padding: 30px;
     padding-bottom: 40px;

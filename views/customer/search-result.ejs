@@ -14,16 +14,16 @@
     <body>
         <%- include ('./nav-customer') %>
         <nav aria-label="container breadcrumb" class="mt-4">
-            <ol class="breadcrumb mx-5" style="font-size: 1.5em;">
+            <ol class="breadcrumb size mx-5" >
               <li class="breadcrumb-item pl-3"><a href="/" class="text-black">Home</a></li>
               <li class="breadcrumb-item active text-black" aria-current="page">Result</li>
             </ol>
         </nav>
           
-        <div class="container-fluid mr-4" style="height: fit-content;" >
+        <div class="container-fluid mr-4"  id="products-result">
             <ul class="row mt-4">
                 <% products.forEach( product => {%>
-                    <li class="card text-center col-5 mx-3" style="width: 18rem;">
+                    <li class="card text-center col-5 mx-3" id="cards-result">
                         <img src="/<%=product.image %>" class="card-img-top rounded card-img-top rounded custom-img-card ">
                         <div class="card-body">
                             <a href="/customer/<%= product._id %>"  class="card-title"> <h5><%= product.name %> </h5></a>

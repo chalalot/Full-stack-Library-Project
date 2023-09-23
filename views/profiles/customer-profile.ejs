@@ -22,14 +22,14 @@
     <div class="container text-center">
         <div class="row">
             <div class="col align-self-center text-black">
-                <h1 style="font-size: 6em;">Profile</h1>
+                <h1 id="profile-deading" >Profile</h1>
               </div>
         </div>
     </div>
 
     <div class="container-fluid row mt-3 text-center  justify-content-center" >
         <div class="container col-md-auto mx-4" >
-            <img src="/<%= user.profilePicture %>" alt="profile picture" class="rounded mx-auto mb-5 d-block row" style="width: 300px;">
+            <img src="/<%= user.profilePicture %>" alt="profile picture" class="rounded mx-auto mb-5 d-block row" id="profile-img" >
             
             <form action="/profiles/change-avatar" method="POST" enctype="multipart/form-data" class="row mt-2 row justify-content-between"> 
                 <input type="file" name="image" class="btn col-8">
@@ -37,7 +37,7 @@
             </form>
         </div>
         
-        <div class="container col-md-7 mx-0 mt-5 text-black text-start" style="height: auto;">
+        <div class="container col-md-7 mx-0 mt-5 text-black text-start" id="profile-descript">
             <h2 > <Strong class="text-black ">Welcome</Strong> <%= user.name %> !!</h2>
             <h2 > <Strong class="text-black">Your Role:</Strong> <%= user.__t %></h2>
             <h2 > <Strong class="text-black">Your Address:</Strong> <%= user.address %></h2>
