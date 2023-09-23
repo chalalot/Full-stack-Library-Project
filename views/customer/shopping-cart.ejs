@@ -24,11 +24,11 @@
 <div class="container border border-3 my-5 rounded shadow text-black">
     <% if (products && products.length > 0) { %>
         <ul class="row ">
+            <p class=" mt-5 text-black" ><strong class="text-info "><h1 class="text-center">Shopping Cart List</h1></strong> </p>
             <!-- Loop through the orders array and generate a list item for each order -->
             <% products.forEach((product) => { %>
                 <li class="mt-5 ">
                     <!-- Display order details -->
-                    <p ><strong class="text-info"><h1>Shopping Cart List</h1></strong> </p>
                     <p class="text-black  "><strong class="text-black">Product Name:</strong> <%= product.name %></p>
                     <p class="text-black"><strong class="text-black">Product Price:</strong> $<%= product.price %></p>
                 </li>
