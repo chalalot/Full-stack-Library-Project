@@ -163,7 +163,7 @@ Acknowledgement: Pedro Tech, Web Dev Simplified. */
 }
 
 #card-product {
-    width: 18rem;
+    width: 100%;
 }
 
 #filter {
@@ -279,7 +279,7 @@ Acknowledgement: Pedro Tech, Web Dev Simplified. */
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 #added-product {
     width: fit-content;
